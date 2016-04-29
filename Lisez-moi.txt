@@ -1,5 +1,10 @@
-Test modification fichier Lisez-moi.txt
+Projet Architecture Web des SI: Gestion d'un bibliothèque universitaire
 
+Membres du projet:
 
-test
-rrrr
+    - Maxime DAGMEY
+    - Mathieu ORMA
+    - Joris CABRITO
+    - Antonin DAMERVAL
+    
+Date limite de rendu => Mardi 7 Juin 2016
