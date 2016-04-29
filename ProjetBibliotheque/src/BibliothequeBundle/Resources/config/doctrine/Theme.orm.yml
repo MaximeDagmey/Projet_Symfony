@@ -1,0 +1,24 @@
+BU\BibliothequeBundle\Entity\Theme:
+    type: entity
+    table: null
+    repositoryClass: BU\BibliothequeBundle\Repository\ThemeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: string
+            length: 255
+    oneToMany:
+        rayons:
+            targetEntity: Rayon
+            mappedBy: theme
+            cascade : [ persist ]
+    manyToMany:
+        livretheme:
+            targetEntity: Livre
+            inversedBy: themes
+    lifecycleCallbacks: {  }

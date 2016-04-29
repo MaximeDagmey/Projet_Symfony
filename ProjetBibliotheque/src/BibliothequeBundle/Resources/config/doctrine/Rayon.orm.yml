@@ -1,0 +1,20 @@
+BU\BibliothequeBundle\Entity\Rayon:
+    type: entity
+    table: null
+    repositoryClass: BU\BibliothequeBundle\Repository\RayonRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        designation:
+            type: string
+            length: '35'
+    oneToMany:
+        rayons:
+            targetEntity: Etagere
+            mappedBy: rayon
+            cascade : [ persist ]
+    lifecycleCallbacks: {  }

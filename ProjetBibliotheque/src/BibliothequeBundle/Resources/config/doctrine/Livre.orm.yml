@@ -1,0 +1,30 @@
+BU\BibliothequeBundle\Entity\Livre:
+    type: entity
+    table: null
+    repositoryClass: BU\BibliothequeBundle\Repository\LivreRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 50
+        notice:
+            type: string
+            length: 255
+    manyToMany:
+        themes:
+            targetEntity: Theme
+            inversedBy: livretheme
+    manyToMany:
+        auteurs:
+            targetEntity: Auteur
+            inversedBy: livreauteur
+    manyToMany:
+        livreemprunt:
+            targetEntity: User
+            inversedBy: emprunts
+    lifecycleCallbacks: {  }
