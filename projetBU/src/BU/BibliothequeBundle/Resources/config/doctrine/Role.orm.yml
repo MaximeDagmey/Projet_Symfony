@@ -1,0 +1,20 @@
+BU\BibliothequeBundle\Entity\Role:
+    type: entity
+    table: null
+    repositoryClass: BU\BibliothequeBundle\Repository\RoleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        role:
+            type: string
+            length: '25'
+    oneToMany:
+        users:
+            targetEntity: User
+            mappedBy: role
+            cascade : [ persist ]
+    lifecycleCallbacks: {  }

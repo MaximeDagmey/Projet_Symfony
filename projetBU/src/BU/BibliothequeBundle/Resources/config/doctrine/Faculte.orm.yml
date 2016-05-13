@@ -1,0 +1,20 @@
+BU\BibliothequeBundle\Entity\Faculte:
+    type: entity
+    table: null
+    repositoryClass: BU\BibliothequeBundle\Repository\FaculteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        designation:
+            type: string
+            length: 35
+    oneToMany:
+        users:
+            targetEntity: User
+            mappedBy: faculte
+            cascade : [ persist ]
+    lifecycleCallbacks: {  }

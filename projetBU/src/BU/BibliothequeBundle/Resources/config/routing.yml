@@ -1,0 +1,3 @@
+bu_bibliotheque_homepage:
+    path:     /
+    defaults: { _controller: BUBibliothequeBundle:Default:index }

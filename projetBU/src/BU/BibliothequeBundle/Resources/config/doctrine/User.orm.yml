@@ -1,0 +1,41 @@
+BU\BibliothequeBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: BU\BibliothequeBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 25
+        prenom:
+            type: string
+            length: 25
+        password:
+            type: string
+            length: 25
+        cycle:
+            type: smallint
+    manyToOne:
+        faculte:
+           targetEntity: Faculte
+           inversedBy: users
+           cascade: [ persist ]
+           joinColumn:
+              onDelete: cascade
+    manyToMany:
+        emprunts:
+            targetEntity: Livre
+            inversedBy: livreemprunt
+    manyToOne:
+        role:
+           targetEntity: Role
+           inversedBy: users
+           cascade: [ persist ]
+           joinColumn:
+              onDelete: cascade
+    lifecycleCallbacks: {  }
