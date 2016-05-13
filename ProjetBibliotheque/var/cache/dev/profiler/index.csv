@@ -1,0 +1,6 @@
+5b5578,127.0.0.1,GET,http://localhost:8000/app_dev.php/bibliotheque,1461935413,,301
+43424a,127.0.0.1,GET,http://localhost:8000/app_dev.php/bibliotheque/,1461935414,,200
+6cced5,127.0.0.1,GET,http://localhost:8000/app_dev.php/bibliotheque/,1461935463,,200
+866ffd,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1463135362,,200
+08e0fa,127.0.0.1,GET,http://localhost:8000/app_dev.php/default,1463135421,4ca00a,200
+4ca00a,127.0.0.1,GET,http://localhost:8000/app_dev.php/default,1463135422,,404
