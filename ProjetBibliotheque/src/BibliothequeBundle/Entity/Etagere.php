@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Entity;
+namespace BibliothequeBundle\Entity;
 
 /**
  * Etagere
@@ -64,7 +64,7 @@ class Etagere
      *
      * @return Etagere
      */
-    public function setRayon(\BU\BibliothequeBundle\Entity\Rayon $rayon = null)
+    public function setRayon(\BibliothequeBundle\Entity\Rayon $rayon = null)
     {
         $this->rayon = $rayon;
 

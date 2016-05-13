@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Entity;
+namespace BibliothequeBundle\Entity;
 
 /**
  * User
@@ -163,7 +163,7 @@ class User
      *
      * @return User
      */
-    public function setFaculte(\BU\BibliothequeBundle\Entity\Faculte $faculte = null)
+    public function setFaculte(\BibliothequeBundle\Entity\Faculte $faculte = null)
     {
         $this->faculte = $faculte;
 
@@ -187,7 +187,7 @@ class User
      *
      * @return User
      */
-    public function addEmprunt(\BU\BibliothequeBundle\Entity\Livre $emprunt)
+    public function addEmprunt(\BibliothequeBundle\Entity\Livre $emprunt)
     {
         $this->emprunts[] = $emprunt;
 
@@ -199,7 +199,7 @@ class User
      *
      * @param \BU\BibliothequeBundle\Entity\Livre $emprunt
      */
-    public function removeEmprunt(\BU\BibliothequeBundle\Entity\Livre $emprunt)
+    public function removeEmprunt(\BibliothequeBundle\Entity\Livre $emprunt)
     {
         $this->emprunts->removeElement($emprunt);
     }

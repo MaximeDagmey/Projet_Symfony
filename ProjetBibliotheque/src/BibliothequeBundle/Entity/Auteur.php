@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Entity;
+namespace BibliothequeBundle\Entity;
 
 /**
  * Auteur
@@ -100,7 +100,7 @@ class Auteur
      *
      * @return Auteur
      */
-    public function addLivreauteur(\BU\BibliothequeBundle\Entity\Livre $livreauteur)
+    public function addLivreauteur(\BibliothequeBundle\Entity\Livre $livreauteur)
     {
         $this->livreauteur[] = $livreauteur;
 
@@ -112,7 +112,7 @@ class Auteur
      *
      * @param \BU\BibliothequeBundle\Entity\Livre $livreauteur
      */
-    public function removeLivreauteur(\BU\BibliothequeBundle\Entity\Livre $livreauteur)
+    public function removeLivreauteur(\BibliothequeBundle\Entity\Livre $livreauteur)
     {
         $this->livreauteur->removeElement($livreauteur);
     }

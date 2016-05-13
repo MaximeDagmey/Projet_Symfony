@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Repository;
+namespace BibliothequeBundle\Repository;
 
 /**
  * ThemeRepository

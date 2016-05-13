@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Entity;
+namespace BibliothequeBundle\Entity;
 
 /**
  * Rayon
@@ -71,7 +71,7 @@ class Rayon
      *
      * @return Rayon
      */
-    public function addRayon(\BU\BibliothequeBundle\Entity\Etagere $rayon)
+    public function addRayon(\BibliothequeBundle\Entity\Etagere $rayon)
     {
         $this->rayons[] = $rayon;
 
@@ -83,7 +83,7 @@ class Rayon
      *
      * @param \BU\BibliothequeBundle\Entity\Etagere $rayon
      */
-    public function removeRayon(\BU\BibliothequeBundle\Entity\Etagere $rayon)
+    public function removeRayon(\BibliothequeBundle\Entity\Etagere $rayon)
     {
         $this->rayons->removeElement($rayon);
     }

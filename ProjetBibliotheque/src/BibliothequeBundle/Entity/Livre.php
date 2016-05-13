@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Entity;
+namespace BibliothequeBundle\Entity;
 
 /**
  * Livre
@@ -100,7 +100,7 @@ class Livre
      *
      * @return Livre
      */
-    public function addTheme(\BU\BibliothequeBundle\Entity\Theme $theme)
+    public function addTheme(\BibliothequeBundle\Entity\Theme $theme)
     {
         $this->themes[] = $theme;
 
@@ -112,7 +112,7 @@ class Livre
      *
      * @param \BU\BibliothequeBundle\Entity\Theme $theme
      */
-    public function removeTheme(\BU\BibliothequeBundle\Entity\Theme $theme)
+    public function removeTheme(\BibliothequeBundle\Entity\Theme $theme)
     {
         $this->themes->removeElement($theme);
     }

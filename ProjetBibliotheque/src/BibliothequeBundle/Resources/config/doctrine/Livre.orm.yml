@@ -1,7 +1,7 @@
-BU\BibliothequeBundle\Entity\Livre:
+BibliothequeBundle\Entity\Livre:
     type: entity
     table: null
-    repositoryClass: BU\BibliothequeBundle\Repository\LivreRepository
+    repositoryClass: BibliothequeBundle\Repository\LivreRepository
     id:
         id:
             type: integer

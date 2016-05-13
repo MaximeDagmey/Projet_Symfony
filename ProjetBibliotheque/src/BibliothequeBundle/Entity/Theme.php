@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Entity;
+namespace BibliothequeBundle\Entity;
 
 /**
  * Theme
@@ -77,7 +77,7 @@ class Theme
      *
      * @return Theme
      */
-    public function addRayon(\BU\BibliothequeBundle\Entity\Rayon $rayon)
+    public function addRayon(\BibliothequeBundle\Entity\Rayon $rayon)
     {
         $this->rayons[] = $rayon;
 
@@ -89,7 +89,7 @@ class Theme
      *
      * @param \BU\BibliothequeBundle\Entity\Rayon $rayon
      */
-    public function removeRayon(\BU\BibliothequeBundle\Entity\Rayon $rayon)
+    public function removeRayon(\BibliothequeBundle\Entity\Rayon $rayon)
     {
         $this->rayons->removeElement($rayon);
     }
@@ -111,7 +111,7 @@ class Theme
      *
      * @return Theme
      */
-    public function addLivretheme(\BU\BibliothequeBundle\Entity\Livre $livretheme)
+    public function addLivretheme(\BibliothequeBundle\Entity\Livre $livretheme)
     {
         $this->livretheme[] = $livretheme;
 
@@ -123,7 +123,7 @@ class Theme
      *
      * @param \BU\BibliothequeBundle\Entity\Livre $livretheme
      */
-    public function removeLivretheme(\BU\BibliothequeBundle\Entity\Livre $livretheme)
+    public function removeLivretheme(\BibliothequeBundle\Entity\Livre $livretheme)
     {
         $this->livretheme->removeElement($livretheme);
     }

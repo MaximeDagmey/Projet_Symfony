@@ -1,6 +1,6 @@
 <?php
 
-namespace BU\BibliothequeBundle\Entity;
+namespace BibliothequeBundle\Entity;
 
 /**
  * Faculte
@@ -71,7 +71,7 @@ class Faculte
      *
      * @return Faculte
      */
-    public function addUser(\BU\BibliothequeBundle\Entity\User $user)
+    public function addUser(\BibliothequeBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -83,7 +83,7 @@ class Faculte
      *
      * @param \BU\BibliothequeBundle\Entity\User $user
      */
-    public function removeUser(\BU\BibliothequeBundle\Entity\User $user)
+    public function removeUser(\BibliothequeBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }
