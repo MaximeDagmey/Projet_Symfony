@@ -138,5 +138,118 @@ class User
         return $this->cycle;
     }
 
-}
+    /**
+     * @var \BU\BibliothequeBundle\Entity\Faculte
+     */
+    private $faculte;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $emprunts;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->emprunts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set faculte
+     *
+     * @param \BU\BibliothequeBundle\Entity\Faculte $faculte
+     *
+     * @return User
+     */
+    public function setFaculte(\BU\BibliothequeBundle\Entity\Faculte $faculte = null)
+    {
+        $this->faculte = $faculte;
+
+        return $this;
+    }
+
+    /**
+     * Get faculte
+     *
+     * @return \BU\BibliothequeBundle\Entity\Faculte
+     */
+    public function getFaculte()
+    {
+        return $this->faculte;
+    }
+
+    /**
+     * Add emprunt
+     *
+     * @param \BU\BibliothequeBundle\Entity\Livre $emprunt
+     *
+     * @return User
+     */
+    public function addEmprunt(\BU\BibliothequeBundle\Entity\Livre $emprunt)
+    {
+        $this->emprunts[] = $emprunt;
+
+        return $this;
+    }
+
+    /**
+     * Remove emprunt
+     *
+     * @param \BU\BibliothequeBundle\Entity\Livre $emprunt
+     */
+    public function removeEmprunt(\BU\BibliothequeBundle\Entity\Livre $emprunt)
+    {
+        $this->emprunts->removeElement($emprunt);
+    }
+
+    /**
+     * Get emprunts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmprunts()
+    {
+        return $this->emprunts;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $empruntuser;
+
+
+    /**
+     * Add empruntuser
+     *
+     * @param \BU\BibliothequeBundle\Entity\Emprunt $empruntuser
+     *
+     * @return User
+     */
+    public function addEmpruntuser(\BU\BibliothequeBundle\Entity\Emprunt $empruntuser)
+    {
+        $this->empruntuser[] = $empruntuser;
+
+        return $this;
+    }
+
+    /**
+     * Remove empruntuser
+     *
+     * @param \BU\BibliothequeBundle\Entity\Emprunt $empruntuser
+     */
+    public function removeEmpruntuser(\BU\BibliothequeBundle\Entity\Emprunt $empruntuser)
+    {
+        $this->empruntuser->removeElement($empruntuser);
+    }
+
+    /**
+     * Get empruntuser
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmpruntuser()
+    {
+        return $this->empruntuser;
+    }
+}

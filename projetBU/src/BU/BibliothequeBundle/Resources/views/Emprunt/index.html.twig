@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Emprunt list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emprunt in emprunts %}
+            <tr>
+                <td><a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">{{ emprunt.id }}</a></td>
+                <td>{% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('emprunt_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

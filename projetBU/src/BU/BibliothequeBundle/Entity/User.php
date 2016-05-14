@@ -213,4 +213,43 @@ class User
     {
         return $this->emprunts;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $empruntuser;
+
+
+    /**
+     * Add empruntuser
+     *
+     * @param \BU\BibliothequeBundle\Entity\Emprunt $empruntuser
+     *
+     * @return User
+     */
+    public function addEmpruntuser(\BU\BibliothequeBundle\Entity\Emprunt $empruntuser)
+    {
+        $this->empruntuser[] = $empruntuser;
+
+        return $this;
+    }
+
+    /**
+     * Remove empruntuser
+     *
+     * @param \BU\BibliothequeBundle\Entity\Emprunt $empruntuser
+     */
+    public function removeEmpruntuser(\BU\BibliothequeBundle\Entity\Emprunt $empruntuser)
+    {
+        $this->empruntuser->removeElement($empruntuser);
+    }
+
+    /**
+     * Get empruntuser
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmpruntuser()
+    {
+        return $this->empruntuser;
+    }
 }

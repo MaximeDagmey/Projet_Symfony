@@ -20,5 +20,5 @@ BU\BibliothequeBundle\Entity\Theme:
     manyToMany:
         livretheme:
             targetEntity: Livre
-            inversedBy: themes
+            mappedBy: themes
     lifecycleCallbacks: {  }

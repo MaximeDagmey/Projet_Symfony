@@ -18,4 +18,8 @@ BU\BibliothequeBundle\Entity\Etagere:
            cascade: [ persist ]
            joinColumn:
               onDelete: cascade
+    oneToMany:
+        livres:
+           targetEntity: Livre
+           mappedBy: etagere
     lifecycleCallbacks: {  }

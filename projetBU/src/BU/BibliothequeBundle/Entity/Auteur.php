@@ -126,4 +126,33 @@ class Auteur
     {
         return $this->livreauteur;
     }
+    /**
+     * @var string
+     */
+    private $titi;
+
+
+    /**
+     * Set titi
+     *
+     * @param string $titi
+     *
+     * @return Auteur
+     */
+    public function setTiti($titi)
+    {
+        $this->titi = $titi;
+
+        return $this;
+    }
+
+    /**
+     * Get titi
+     *
+     * @return string
+     */
+    public function getTiti()
+    {
+        return $this->titi;
+    }
 }

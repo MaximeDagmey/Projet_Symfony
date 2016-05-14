@@ -51,5 +51,50 @@ class Rayon
     {
         return $this->designation;
     }
-}
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $rayons;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rayons = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add rayon
+     *
+     * @param \BU\BibliothequeBundle\Entity\Etagere $rayon
+     *
+     * @return Rayon
+     */
+    public function addRayon(\BU\BibliothequeBundle\Entity\Etagere $rayon)
+    {
+        $this->rayons[] = $rayon;
+
+        return $this;
+    }
+
+    /**
+     * Remove rayon
+     *
+     * @param \BU\BibliothequeBundle\Entity\Etagere $rayon
+     */
+    public function removeRayon(\BU\BibliothequeBundle\Entity\Etagere $rayon)
+    {
+        $this->rayons->removeElement($rayon);
+    }
+
+    /**
+     * Get rayons
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRayons()
+    {
+        return $this->rayons;
+    }
+}

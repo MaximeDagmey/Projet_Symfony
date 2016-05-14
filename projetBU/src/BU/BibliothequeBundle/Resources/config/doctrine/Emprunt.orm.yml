@@ -1,0 +1,28 @@
+BU\BibliothequeBundle\Entity\Emprunt:
+    type: entity
+    repositoryClass: BU\BibliothequeBundle\Repository\EmpruntRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        livre:
+            targetEntity: Livre
+            inversedBy: livreemprunt
+            cascade: [ persist ]
+            joinColumn:
+               onDelete: cascade
+        user:
+            targetEntity: User
+            inversedBy: empruntuser
+            cascade: [ persist ]
+            joinColumn:
+                onDelete: cascade
+    fields:
+        date:
+           type: date
+    lifecycleCallbacks: {  }
+            
+

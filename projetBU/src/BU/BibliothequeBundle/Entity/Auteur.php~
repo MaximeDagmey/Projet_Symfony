@@ -80,5 +80,79 @@ class Auteur
     {
         return $this->nom;
     }
-}
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $livreauteur;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->livreauteur = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add livreauteur
+     *
+     * @param \BU\BibliothequeBundle\Entity\Livre $livreauteur
+     *
+     * @return Auteur
+     */
+    public function addLivreauteur(\BU\BibliothequeBundle\Entity\Livre $livreauteur)
+    {
+        $this->livreauteur[] = $livreauteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove livreauteur
+     *
+     * @param \BU\BibliothequeBundle\Entity\Livre $livreauteur
+     */
+    public function removeLivreauteur(\BU\BibliothequeBundle\Entity\Livre $livreauteur)
+    {
+        $this->livreauteur->removeElement($livreauteur);
+    }
+
+    /**
+     * Get livreauteur
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLivreauteur()
+    {
+        return $this->livreauteur;
+    }
+    /**
+     * @var string
+     */
+    private $titi;
+
+
+    /**
+     * Set titi
+     *
+     * @param string $titi
+     *
+     * @return Auteur
+     */
+    public function setTiti($titi)
+    {
+        $this->titi = $titi;
+
+        return $this;
+    }
+
+    /**
+     * Get titi
+     *
+     * @return string
+     */
+    public function getTiti()
+    {
+        return $this->titi;
+    }
+}

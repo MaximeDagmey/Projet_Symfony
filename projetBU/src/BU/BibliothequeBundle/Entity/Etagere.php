@@ -80,4 +80,50 @@ class Etagere
     {
         return $this->rayon;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $livres;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->livres = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add livre
+     *
+     * @param \BU\BibliothequeBundle\Entity\Livre $livre
+     *
+     * @return Etagere
+     */
+    public function addLivre(\BU\BibliothequeBundle\Entity\Livre $livre)
+    {
+        $this->livres[] = $livre;
+
+        return $this;
+    }
+
+    /**
+     * Remove livre
+     *
+     * @param \BU\BibliothequeBundle\Entity\Livre $livre
+     */
+    public function removeLivre(\BU\BibliothequeBundle\Entity\Livre $livre)
+    {
+        $this->livres->removeElement($livre);
+    }
+
+    /**
+     * Get livres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLivres()
+    {
+        return $this->livres;
+    }
 }

@@ -1,3 +1,35 @@
+bu_bibliotheque_auteur:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/auteur.yml"
+    prefix:   /auteur
+
+bu_bibliotheque_livre:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/livre.yml"
+    prefix:   /livre
+
+bu_bibliotheque_theme:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/theme.yml"
+    prefix:   /theme
+
+bu_bibliotheque_rayon:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/rayon.yml"
+    prefix:   /rayon
+
+bu_bibliotheque_etagere:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/etagere.yml"
+    prefix:   /etagere
+
+bu_bibliotheque_faculte:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/faculte.yml"
+    prefix:   /faculte
+
+bu_bibliotheque_user:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+bu_bibliotheque_emprunt:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/emprunt.yml"
+    prefix:   /emprunt
+
 bu_bibliotheque_homepage:
     path:     /
     defaults: { _controller: BUBibliothequeBundle:Default:index }
