@@ -47,7 +47,7 @@ class LivreController extends Controller
             return $this->redirectToRoute('livre_show', array('id' => $livre->getId()));
         }
 
-        return $this->render('livre/new.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Livre:new.html.twig', array(
             'livre' => $livre,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class LivreController extends Controller
     {
         $deleteForm = $this->createDeleteForm($livre);
 
-        return $this->render('livre/show.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Livre:show.html.twig', array(
             'livre' => $livre,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class LivreController extends Controller
             return $this->redirectToRoute('livre_edit', array('id' => $livre->getId()));
         }
 
-        return $this->render('livre/edit.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Livre:edit.html.twig', array(
             'livre' => $livre,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

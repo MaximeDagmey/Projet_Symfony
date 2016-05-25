@@ -47,7 +47,7 @@ class EmpruntController extends Controller
             return $this->redirectToRoute('emprunt_show', array('id' => $emprunt->getId()));
         }
 
-        return $this->render('emprunt/new.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
             'emprunt' => $emprunt,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class EmpruntController extends Controller
     {
         $deleteForm = $this->createDeleteForm($emprunt);
 
-        return $this->render('emprunt/show.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Emprunt:show.html.twig', array(
             'emprunt' => $emprunt,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class EmpruntController extends Controller
             return $this->redirectToRoute('emprunt_edit', array('id' => $emprunt->getId()));
         }
 
-        return $this->render('emprunt/edit.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Emprunt:edit.html.twig', array(
             'emprunt' => $emprunt,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

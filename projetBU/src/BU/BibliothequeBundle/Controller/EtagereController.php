@@ -24,7 +24,7 @@ class EtagereController extends Controller
 
         $etageres = $em->getRepository('BUBibliothequeBundle:Etagere')->findAll();
 
-        return $this->render('etagere/index.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Etagere:index.html.twig', array(
             'etageres' => $etageres,
         ));
     }
@@ -47,7 +47,7 @@ class EtagereController extends Controller
             return $this->redirectToRoute('etagere_show', array('id' => $etagere->getId()));
         }
 
-        return $this->render('etagere/new.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Etagere:new.html.twig', array(
             'etagere' => $etagere,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class EtagereController extends Controller
     {
         $deleteForm = $this->createDeleteForm($etagere);
 
-        return $this->render('etagere/show.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Etagere:show.html.twig', array(
             'etagere' => $etagere,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class EtagereController extends Controller
             return $this->redirectToRoute('etagere_edit', array('id' => $etagere->getId()));
         }
 
-        return $this->render('etagere/edit.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Etagere:edit.html.twig', array(
             'etagere' => $etagere,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

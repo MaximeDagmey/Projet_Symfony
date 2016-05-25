@@ -24,7 +24,7 @@ class FaculteController extends Controller
 
         $facultes = $em->getRepository('BUBibliothequeBundle:Faculte')->findAll();
 
-        return $this->render('faculte/index.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Faculte:index.html.twig', array(
             'facultes' => $facultes,
         ));
     }
@@ -47,7 +47,7 @@ class FaculteController extends Controller
             return $this->redirectToRoute('faculte_show', array('id' => $faculte->getId()));
         }
 
-        return $this->render('faculte/new.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Faculte:new.html.twig', array(
             'faculte' => $faculte,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class FaculteController extends Controller
     {
         $deleteForm = $this->createDeleteForm($faculte);
 
-        return $this->render('faculte/show.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Faculte:show.html.twig', array(
             'faculte' => $faculte,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class FaculteController extends Controller
             return $this->redirectToRoute('faculte_edit', array('id' => $faculte->getId()));
         }
 
-        return $this->render('faculte/edit.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Faculte:edit.html.twig', array(
             'faculte' => $faculte,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

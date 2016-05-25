@@ -24,7 +24,7 @@ class ThemeController extends Controller
 
         $themes = $em->getRepository('BUBibliothequeBundle:Theme')->findAll();
 
-        return $this->render('theme/index.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Theme:index.html.twig', array(
             'themes' => $themes,
         ));
     }
@@ -47,7 +47,7 @@ class ThemeController extends Controller
             return $this->redirectToRoute('theme_show', array('id' => $theme->getId()));
         }
 
-        return $this->render('theme/new.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Theme:new.html.twig', array(
             'theme' => $theme,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class ThemeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($theme);
 
-        return $this->render('theme/show.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Theme:show.html.twig', array(
             'theme' => $theme,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class ThemeController extends Controller
             return $this->redirectToRoute('theme_edit', array('id' => $theme->getId()));
         }
 
-        return $this->render('theme/edit.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Theme:edit.html.twig', array(
             'theme' => $theme,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

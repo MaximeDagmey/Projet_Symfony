@@ -24,7 +24,7 @@ class RayonController extends Controller
 
         $rayons = $em->getRepository('BUBibliothequeBundle:Rayon')->findAll();
 
-        return $this->render('rayon/index.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Rayon:index.html.twig', array(
             'rayons' => $rayons,
         ));
     }
@@ -47,7 +47,7 @@ class RayonController extends Controller
             return $this->redirectToRoute('rayon_show', array('id' => $rayon->getId()));
         }
 
-        return $this->render('rayon/new.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Rayon:new.html.twig', array(
             'rayon' => $rayon,
             'form' => $form->createView(),
         ));
@@ -61,7 +61,7 @@ class RayonController extends Controller
     {
         $deleteForm = $this->createDeleteForm($rayon);
 
-        return $this->render('rayon/show.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Rayon:show.html.twig', array(
             'rayon' => $rayon,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -85,7 +85,7 @@ class RayonController extends Controller
             return $this->redirectToRoute('rayon_edit', array('id' => $rayon->getId()));
         }
 
-        return $this->render('rayon/edit.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Rayon:edit.html.twig', array(
             'rayon' => $rayon,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
