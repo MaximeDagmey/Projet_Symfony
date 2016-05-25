@@ -234,9 +234,9 @@ class Livre
         return $this->livreemprunt;
     }
     
-    public function __toString()
-    {
-        return $this->getTitre()." ".getNotice()." ".getEtagere()." ".getThemes();
+    public function __toString(){
+        return $this->getTitre();
+    }
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
