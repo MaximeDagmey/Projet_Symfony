@@ -36,7 +36,7 @@ class EmpruntController extends Controller
     public function newAction(Request $request)
     {
         $emprunt = new Emprunt();
-        $form = $this->createForm('BU\BibliothequeBundle\Form\EmpruntType', $emprunt);
+        $form = $this->createForm(EmpruntType::class, $emprunt);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +74,7 @@ class EmpruntController extends Controller
     public function editAction(Request $request, Emprunt $emprunt)
     {
         $deleteForm = $this->createDeleteForm($emprunt);
-        $editForm = $this->createForm('BU\BibliothequeBundle\Form\EmpruntType', $emprunt);
+        $editForm = $this->createForm(EmpruntType::class, $emprunt);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

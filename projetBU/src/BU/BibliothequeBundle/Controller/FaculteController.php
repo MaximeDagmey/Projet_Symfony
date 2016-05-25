@@ -36,7 +36,7 @@ class FaculteController extends Controller
     public function newAction(Request $request)
     {
         $faculte = new Faculte();
-        $form = $this->createForm('BU\BibliothequeBundle\Form\FaculteType', $faculte);
+        $form = $this->createForm(FaculteType::class, $faculte);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +74,7 @@ class FaculteController extends Controller
     public function editAction(Request $request, Faculte $faculte)
     {
         $deleteForm = $this->createDeleteForm($faculte);
-        $editForm = $this->createForm('BU\BibliothequeBundle\Form\FaculteType', $faculte);
+        $editForm = $this->createForm(FaculteType::class, $faculte);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

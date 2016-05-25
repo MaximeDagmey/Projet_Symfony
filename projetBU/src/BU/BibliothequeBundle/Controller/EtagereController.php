@@ -36,7 +36,7 @@ class EtagereController extends Controller
     public function newAction(Request $request)
     {
         $etagere = new Etagere();
-        $form = $this->createForm('BU\BibliothequeBundle\Form\EtagereType', $etagere);
+        $form = $this->createForm(EtagereType::class, $etagere);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +74,7 @@ class EtagereController extends Controller
     public function editAction(Request $request, Etagere $etagere)
     {
         $deleteForm = $this->createDeleteForm($etagere);
-        $editForm = $this->createForm('BU\BibliothequeBundle\Form\EtagereType', $etagere);
+        $editForm = $this->createForm(EtagereType::class, $etagere);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

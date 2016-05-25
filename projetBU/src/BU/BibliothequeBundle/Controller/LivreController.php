@@ -36,7 +36,7 @@ class LivreController extends Controller
     public function newAction(Request $request)
     {
         $livre = new Livre();
-        $form = $this->createForm('BU\BibliothequeBundle\Form\LivreType', $livre);
+        $form = $this->createForm(LivreType::class, $livre);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +74,7 @@ class LivreController extends Controller
     public function editAction(Request $request, Livre $livre)
     {
         $deleteForm = $this->createDeleteForm($livre);
-        $editForm = $this->createForm('BU\BibliothequeBundle\Form\LivreType', $livre);
+        $editForm = $this->createForm(LivreType::class, $livre);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

@@ -36,7 +36,7 @@ class AuteurController extends Controller
     public function newAction(Request $request)
     {
         $auteur = new Auteur();
-        $form = $this->createForm('BU\BibliothequeBundle\Form\AuteurType', $auteur);
+        $form = $this->createForm(AuteurType::class, $auteur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +74,7 @@ class AuteurController extends Controller
     public function editAction(Request $request, Auteur $auteur)
     {
         $deleteForm = $this->createDeleteForm($auteur);
-        $editForm = $this->createForm('BU\BibliothequeBundle\Form\AuteurType', $auteur);
+        $editForm = $this->createForm(AuteurType::class, $auteur);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

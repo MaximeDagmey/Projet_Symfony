@@ -36,7 +36,7 @@ class ThemeController extends Controller
     public function newAction(Request $request)
     {
         $theme = new Theme();
-        $form = $this->createForm('BU\BibliothequeBundle\Form\ThemeType', $theme);
+        $form = $this->createForm(ThemeType::class, $theme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +74,7 @@ class ThemeController extends Controller
     public function editAction(Request $request, Theme $theme)
     {
         $deleteForm = $this->createDeleteForm($theme);
-        $editForm = $this->createForm('BU\BibliothequeBundle\Form\ThemeType', $theme);
+        $editForm = $this->createForm(ThemeType::class, $theme);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

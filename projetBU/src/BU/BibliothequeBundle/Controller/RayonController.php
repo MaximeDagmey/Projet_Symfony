@@ -36,7 +36,7 @@ class RayonController extends Controller
     public function newAction(Request $request)
     {
         $rayon = new Rayon();
-        $form = $this->createForm('BU\BibliothequeBundle\Form\RayonType', $rayon);
+        $form = $this->createForm(RayonType::class, $rayon);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +74,7 @@ class RayonController extends Controller
     public function editAction(Request $request, Rayon $rayon)
     {
         $deleteForm = $this->createDeleteForm($rayon);
-        $editForm = $this->createForm('BU\BibliothequeBundle\Form\RayonType', $rayon);
+        $editForm = $this->createForm(RayonType::class, $rayon);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
