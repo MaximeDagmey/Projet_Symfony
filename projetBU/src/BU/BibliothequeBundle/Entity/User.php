@@ -252,4 +252,33 @@ class User
     {
         return $this->empruntuser;
     }
+    /**
+     * @var \BU\BibliothequeBundle\Entity\Role
+     */
+    private $role;
+
+
+    /**
+     * Set role
+     *
+     * @param \BU\BibliothequeBundle\Entity\Role $role
+     *
+     * @return User
+     */
+    public function setRole(\BU\BibliothequeBundle\Entity\Role $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \BU\BibliothequeBundle\Entity\Role
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

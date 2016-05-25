@@ -237,4 +237,43 @@ class Livre
     public function __toString(){
         return $this->getTitre();
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $auteurs;
+
+
+    /**
+     * Add auteur
+     *
+     * @param \BU\BibliothequeBundle\Entity\Auteur $auteur
+     *
+     * @return Livre
+     */
+    public function addAuteur(\BU\BibliothequeBundle\Entity\Auteur $auteur)
+    {
+        $this->auteurs[] = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove auteur
+     *
+     * @param \BU\BibliothequeBundle\Entity\Auteur $auteur
+     */
+    public function removeAuteur(\BU\BibliothequeBundle\Entity\Auteur $auteur)
+    {
+        $this->auteurs->removeElement($auteur);
+    }
+
+    /**
+     * Get auteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAuteurs()
+    {
+        return $this->auteurs;
+    }
 }

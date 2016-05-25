@@ -27,15 +27,14 @@ BU\BibliothequeBundle\Entity\User:
            cascade: [ persist ]
            joinColumn:
               onDelete: cascade
-    oneToMany:
-        empruntuser:
-            targetEntity: Emprunt
-            mappedBy: user
-    manyToOne:
         role:
            targetEntity: Role
            inversedBy: users
            cascade: [ persist ]
            joinColumn:
               onDelete: cascade
+    oneToMany:
+        empruntuser:
+            targetEntity: Emprunt
+            mappedBy: user
     lifecycleCallbacks: {  }
