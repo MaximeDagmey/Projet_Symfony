@@ -17,7 +17,6 @@ class AuteurType extends AbstractType
         $builder
             ->add('prenom')
             ->add('nom')
-            ->add('titi')
             ->add('livreauteur')
         ;
     }
