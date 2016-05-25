@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Auteur list</h1>
+    <h1>Liste des auteurs</h1>
 
     <table>
         <thead>
@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('auteur_show', { 'id': auteur.id }) }}">show</a>
+                            <a href="{{ path('auteur_show', { 'id': auteur.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('auteur_edit', { 'id': auteur.id }) }}">edit</a>
+                            <a href="{{ path('auteur_edit', { 'id': auteur.id }) }}">Modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('auteur_new') }}">Create a new entry</a>
+            <a href="{{ path('auteur_new') }}">Créer un nouvel auteur</a>
         </li>
     </ul>
 {% endblock %}
