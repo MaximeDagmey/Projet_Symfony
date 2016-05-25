@@ -20,7 +20,6 @@ class UserType extends AbstractType
             ->add('password')
             ->add('cycle')
             ->add('faculte')
-            ->add('emprunts')
         ;
     }
     
