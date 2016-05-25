@@ -19,7 +19,6 @@ BU\BibliothequeBundle\Entity\Livre:
         themes:
             targetEntity: Theme
             inversedBy: livretheme
-    manyToMany:
         auteurs:
             targetEntity: Auteur
             inversedBy: livreauteur

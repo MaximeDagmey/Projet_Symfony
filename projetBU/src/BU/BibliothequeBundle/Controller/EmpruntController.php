@@ -24,7 +24,7 @@ class EmpruntController extends Controller
 
         $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findAll();
 
-        return $this->render('emprunt/index.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Emprunt:index.html.twig', array(
             'emprunts' => $emprunts,
         ));
     }
