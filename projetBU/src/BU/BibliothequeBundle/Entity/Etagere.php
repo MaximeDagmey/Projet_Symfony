@@ -126,4 +126,9 @@ class Etagere
     {
         return $this->livres;
     }
+    
+    public function __toString()
+    {
+        return strval($this->getNumero());
+    }
 }
