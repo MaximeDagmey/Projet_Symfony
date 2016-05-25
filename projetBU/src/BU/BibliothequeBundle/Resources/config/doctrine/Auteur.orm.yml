@@ -15,9 +15,6 @@ BU\BibliothequeBundle\Entity\Auteur:
         nom:
             type: string
             length: 25
-        titi:
-            type : string
-            length: 30
     manyToMany:
         livreauteur:
             targetEntity: Livre
