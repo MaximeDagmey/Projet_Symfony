@@ -24,7 +24,7 @@ class LivreController extends Controller
 
         $livres = $em->getRepository('BUBibliothequeBundle:Livre')->findAll();
 
-        return $this->render('livre/index.html.twig', array(
+        return $this->render('BUBibliothequeBundle:Livre:index.html.twig', array(
             'livres' => $livres,
         ));
     }
