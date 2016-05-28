@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Livre list</h1>
+    <h1>Liste livre</h1>
 
     <table>
         <thead>
@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('livre_show', { 'id': livre.id }) }}">show</a>
+                            <a href="{{ path('livre_show', { 'id': livre.id }) }}">voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('livre_edit', { 'id': livre.id }) }}">edit</a>
+                            <a href="{{ path('livre_edit', { 'id': livre.id }) }}">éditer</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('livre_new') }}">Create a new entry</a>
+            <a href="{{ path('livre_new') }}">Créér un nouveau livre</a>
         </li>
     </ul>
 {% endblock %}
