@@ -8,6 +8,8 @@
             <tr>
                 <th>Id</th>
                 <th>Date</th>
+                <th>Utilisateur</th>
+                <th>Livre</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +18,8 @@
             <tr>
                 <td><a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">{{ emprunt.id }}</a></td>
                 <td>{% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ emprunt.user }}</td>
+                <td>{{ emprunt.livre }}</td>
                 <td>
                     <ul>
                         <li>
