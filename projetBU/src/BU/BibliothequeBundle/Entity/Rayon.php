@@ -97,4 +97,9 @@ class Rayon
     {
         return $this->rayons;
     }
+    
+    public function __toString()
+    {
+        return $this->getDesignation();
+    }
 }

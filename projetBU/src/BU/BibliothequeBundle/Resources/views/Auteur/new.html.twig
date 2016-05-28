@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Création auteur</h1>
-
+    <h1>Créér auteur</h1>
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Créér" />
+    <h1>Nouvel Auteur</h1>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Créer" />
     {{ form_end(form) }}
 
     <ul>

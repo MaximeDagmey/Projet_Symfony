@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Auteur édition</h1>
-
+    <h1>Modifier un auteur</h1>
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Editer" />
@@ -10,7 +9,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('auteur_index') }}">Back to the list</a>
+            <a href="{{ path('auteur_index') }}">Retour à la liste</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
