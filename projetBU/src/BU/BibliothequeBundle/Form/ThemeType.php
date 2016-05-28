@@ -16,7 +16,6 @@ class ThemeType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('livretheme')
         ;
     }
     
