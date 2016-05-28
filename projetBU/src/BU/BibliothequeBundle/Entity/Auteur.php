@@ -129,6 +129,6 @@ class Auteur
     
     public function __toString()
     {
-        return $this->getNom()." ".getPrenom();
+        return $this->getNom()." ". $this->getPrenom();
     }
 }

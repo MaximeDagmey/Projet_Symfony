@@ -281,4 +281,9 @@ class User
     {
         return $this->role;
     }
+    
+    public function __toString()
+    {
+        return $this->getNom()." ". $this->getPrenom();
+    }
 }
