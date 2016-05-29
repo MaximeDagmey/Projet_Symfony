@@ -131,4 +131,18 @@ class Etagere
     {
         return strval($this->getNumero());
     }
+
+    /**
+     * Set livres
+     *
+     * @param \BU\BibliothequeBundle\Entity\Exemplaire $livres
+     *
+     * @return Etagere
+     */
+    public function setLivres(\BU\BibliothequeBundle\Entity\Exemplaire $livres = null)
+    {
+        $this->livres = $livres;
+
+        return $this;
+    }
 }

@@ -8,8 +8,8 @@ BU\BibliothequeBundle\Entity\Emprunt:
             generator:
                 strategy: AUTO
     manyToOne:
-        livre:
-            targetEntity: Livre
+        exemplaireemprunt:
+            targetEntity: Exemplaire
             inversedBy: livreemprunt
             cascade: [ persist ]
             joinColumn:

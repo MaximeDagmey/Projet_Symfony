@@ -17,7 +17,6 @@ class LivreType extends AbstractType
         $builder
             ->add('titre')
             ->add('notice')
-            ->add('etagere')
             ->add('themes')
         ;
     }

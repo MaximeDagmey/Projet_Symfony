@@ -137,4 +137,9 @@ class Theme
     {
         return $this->livretheme;
     }
+    
+    public function __toString()
+    {
+        return $this->getDescription();
+    }
 }

@@ -22,15 +22,8 @@ BU\BibliothequeBundle\Entity\Livre:
         auteurs:
             targetEntity: Auteur
             inversedBy: livreauteur
-    manyToOne:
-        etagere:
-           targetEntity: Etagere
-           inversedBy: livres
-           cascade: [ persist ]
-           joinColumn:
-              onDelete: cascade
     oneToMany:
-        livreemprunt:
-            targetEntity: Emprunt
-            mappedBy: livre
+        exemplaires:
+            targetEntity: Exemplaire
+            mappedBy: livreexemplaire
     lifecycleCallbacks: {  }

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EmpruntType extends AbstractType
+class ExemplaireType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,9 @@ class EmpruntType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', 'date')
-            ->add('exemplaireemprunt')
-            ->add('user')
+            ->add('designation')
+            ->add('livreexemplaire')
+            ->add('etagere')
         ;
     }
     
@@ -27,7 +27,7 @@ class EmpruntType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BU\BibliothequeBundle\Entity\Emprunt'
+            'data_class' => 'BU\BibliothequeBundle\Entity\Exemplaire'
         ));
     }
 }

@@ -20,6 +20,6 @@ BU\BibliothequeBundle\Entity\Etagere:
               onDelete: cascade
     oneToMany:
         livres:
-           targetEntity: Livre
+           targetEntity: Exemplaire
            mappedBy: etagere
     lifecycleCallbacks: {  }

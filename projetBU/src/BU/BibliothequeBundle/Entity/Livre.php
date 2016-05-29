@@ -276,4 +276,43 @@ class Livre
     {
         return $this->auteurs;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $exemplaires;
+
+
+    /**
+     * Add exemplaire
+     *
+     * @param \BU\BibliothequeBundle\Entity\Exemplaire $exemplaire
+     *
+     * @return Livre
+     */
+    public function addExemplaire(\BU\BibliothequeBundle\Entity\Exemplaire $exemplaire)
+    {
+        $this->exemplaires[] = $exemplaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove exemplaire
+     *
+     * @param \BU\BibliothequeBundle\Entity\Exemplaire $exemplaire
+     */
+    public function removeExemplaire(\BU\BibliothequeBundle\Entity\Exemplaire $exemplaire)
+    {
+        $this->exemplaires->removeElement($exemplaire);
+    }
+
+    /**
+     * Get exemplaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExemplaires()
+    {
+        return $this->exemplaires;
+    }
 }

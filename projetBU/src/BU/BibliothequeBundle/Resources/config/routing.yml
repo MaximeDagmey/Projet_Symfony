@@ -29,6 +29,10 @@ bu_bibliotheque_user:
 bu_bibliotheque_emprunt:
     resource: "@BUBibliothequeBundle/Resources/config/routing/emprunt.yml"
     prefix:   /emprunt
+    
+bu_bibliotheque_exemplaire:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/exemplaire.yml"
+    prefix:   /exemplaire
 
 bu_bibliotheque_homepage:
     path:     /

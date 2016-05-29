@@ -1,0 +1,32 @@
+BU\BibliothequeBundle\Entity\Exemplaire:
+    type: entity
+    table: null
+    repositoryClass: BU\BibliothequeBundle\Repository\ExemplaireRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        designation:
+            type: string
+            length: 4     
+    manyToOne:
+        livreexemplaire:
+            targetEntity: Livre
+            inversedBy: exemplaires
+            cascade: [ persist ]
+            joinColumn:
+              onDelete: cascade
+        etagere:
+            targetEntity: Etagere
+            inversedBy: livres
+            cascade: [ persist ]
+            joinColumn:
+              onDelete: cascade
+    oneToMany:
+        livreemprunt:
+            targetEntity: Emprunt
+            mappedBy:  exemplaireemprunt
+    lifecycleCallbacks: {  }
