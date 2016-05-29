@@ -29,4 +29,7 @@ BU\BibliothequeBundle\Entity\Exemplaire:
         livreemprunt:
             targetEntity: Emprunt
             mappedBy:  exemplaireemprunt
+        livreempruntarch:
+            targetEntity: Archivage
+            mappedBy:  exemplaireempruntarch
     lifecycleCallbacks: {  }

@@ -1,0 +1,28 @@
+BU\BibliothequeBundle\Entity\Archivage:
+    type: entity
+    repositoryClass: BU\BibliothequeBundle\Repository\ArchivageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        exemplaireempruntarch:
+            targetEntity: Exemplaire
+            inversedBy: livreempruntarch
+            cascade: [ persist ]
+            joinColumn:
+               onDelete: cascade
+        userarch:
+            targetEntity: User
+            inversedBy: empruntuserarch
+            cascade: [ persist ]
+            joinColumn:
+                onDelete: cascade
+    fields:
+        date:
+           type: date
+    lifecycleCallbacks: {  }
+            
+

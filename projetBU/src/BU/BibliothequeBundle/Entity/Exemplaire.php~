@@ -184,4 +184,8 @@ class Exemplaire
     {
         return $this->designation;
     }
+    
+    public function __toString(){
+        return $this->getDesignation()." ".$this->getLivreexemplaire();
+    }
 }

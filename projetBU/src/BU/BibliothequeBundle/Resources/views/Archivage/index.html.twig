@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Archivage list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for archivage in archivages %}
+            <tr>
+                <td><a href="{{ path('archivage_show', { 'id': archivage.id }) }}">{{ archivage.id }}</a></td>
+                <td>{% if archivage.date %}{{ archivage.date|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('archivage_show', { 'id': archivage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('archivage_edit', { 'id': archivage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('archivage_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -34,6 +34,11 @@ bu_bibliotheque_exemplaire:
     resource: "@BUBibliothequeBundle/Resources/config/routing/exemplaire.yml"
     prefix:   /exemplaire
 
+bu_bibliotheque_archivage:
+    resource: "@BUBibliothequeBundle/Resources/config/routing/archivage.yml"
+    prefix:   /archivage
+
+
 bu_bibliotheque_homepage:
     path:     /
     defaults: { _controller: BUBibliothequeBundle:Default:index }
