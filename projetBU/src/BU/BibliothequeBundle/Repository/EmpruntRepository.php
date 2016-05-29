@@ -10,4 +10,19 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class EmpruntRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+   public function findReservationLivre($titre){
+		$query = $this->getEntityManager()->createQuery("SELECT s FROM BUBibliothequeBundle:Emprunt s, BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e 
+                                                        WHERE l.titre = :title and l.id = e.livreexemplaire and e.id = s.exemplaireemprunt ");
+		$query->setParameter('title', $titre);
+        return $query->getResult();
+	}
+    public function findReservationuser($Nom,$Prenom){
+		$query = $this->getEntityManager()->createQuery("SELECT s FROM BUBibliothequeBundle:Emprunt s, BUBibliothequeBundle:User u 
+                                                        WHERE u.nom= :nom and u.prenom = :prenom and u.id = s.user ");
+		$query->setParameter('nom', $Nom);
+        $query->setParameter('prenom', $Prenom);
+        return $query->getResult();
+	}
 }
+

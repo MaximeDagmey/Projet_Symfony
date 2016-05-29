@@ -18,6 +18,16 @@ emprunt_edit:
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:edit" }
     methods:  [GET, POST]
 
+emprunt_livre:
+    path:     /livre
+    defaults: { _controller: "BUBibliothequeBundle:Emprunt:empruntparlivre" }
+    methods:  [GET, POST]
+
+emprunt_user:
+    path:     /user
+    defaults: { _controller: "BUBibliothequeBundle:Emprunt:empruntparuser" }
+    methods:  [GET, POST]
+    
 emprunt_delete:
     path:     /{id}/delete
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:delete" }

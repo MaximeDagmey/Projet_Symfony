@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste emprunt</h1>
+    <h1>Chercher emprunt par utilisateur ou livre</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Chercher" />
+    {{ form_end(form) }}
+    <h2>Liste emprunt</h2>
 
     <table>
         <thead>
@@ -34,10 +40,10 @@
         {% endfor %}
         </tbody>
     </table>
-
+    
     <ul>
         <li>
-            <a href="{{ path('emprunt_new') }}">Créér un nouvel emprunt</a>
+            <a href="{{ path('emprunt_index') }}">Retouner à la liste</a>
         </li>
     </ul>
 {% endblock %}
