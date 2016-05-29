@@ -23,6 +23,10 @@ emprunt_livre:
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:empruntparlivre" }
     methods:  [GET, POST]
 
+emprunt_livredispo:
+    path:     /livredispo   
+    defaults: { _controller: "BUBibliothequeBundle:Emprunt:dispolivre" }
+    methods:  [GET, POST]
 emprunt_user:
     path:     /user
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:empruntparuser" }
