@@ -16,4 +16,16 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 		$queryBuider->where('s.nom LIKE :sousChaine')->setParameter('sousChaine', '%'.$sousChaine.'%');
 		return $queryBuider->getQuery()->getResult();
 	}
+    
+    public function getListeEmpruntsByUserId($id)
+    {
+        $query = $this->getEntityManager()->createQuery("SELECT e FROM BUBibliothequeBundle:Emprunt e, BUBibliothequeBundle:User u, BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire Ex 
+                                                         WHERE u.id = e.user 
+                                                         AND l.id = Ex.livreexemplaire 
+                                                         AND Ex.id = e.exemplaireemprunt
+                                                         AND e.user = :UserId");
+                                                         
+		$query->setParameter('UserId', $id);
+        return $query->getResult();
+	}
 }

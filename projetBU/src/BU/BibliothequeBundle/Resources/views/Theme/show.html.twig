@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Theme</h1>
+    <h1>Thème</h1>
 
     <table>
         <tbody>
@@ -21,7 +21,7 @@
             <a href="{{ path('theme_index') }}">Retourner à la liste</a>
         </li>
         <li>
-            <a href="{{ path('theme_edit', { 'id': theme.id }) }}">Editer</a>
+            <a href="{{ path('theme_edit', { 'id': theme.id }) }}">Éditer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

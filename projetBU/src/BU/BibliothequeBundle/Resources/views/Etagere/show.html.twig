@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Etagere</h1>
+    <h1>Etagère</h1>
 
     <table>
         <tbody>
@@ -10,7 +10,7 @@
                 <td>{{ etagere.id }}</td>
             </tr>
             <tr>
-                <th>Numero</th>
+                <th>Numéro</th>
                 <td>{{ etagere.numero }}</td>
             </tr>
         </tbody>
@@ -21,7 +21,7 @@
             <a href="{{ path('etagere_index') }}">Retourner à la liste</a>
         </li>
         <li>
-            <a href="{{ path('etagere_edit', { 'id': etagere.id }) }}">Editer</a>
+            <a href="{{ path('etagere_edit', { 'id': etagere.id }) }}">Éditer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

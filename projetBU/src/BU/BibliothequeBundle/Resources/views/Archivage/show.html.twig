@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('archivage_index') }}">Back to the list</a>
+            <a href="{{ path('archivage_index') }}">Retourner à la liste</a>
         </li>
         <li>
-            <a href="{{ path('archivage_edit', { 'id': archivage.id }) }}">Edit</a>
+            <a href="{{ path('archivage_edit', { 'id': archivage.id }) }}">Éditer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

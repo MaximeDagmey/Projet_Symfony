@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste emprunt</h1>
+    <h1>Liste des emprunts</h1>
 
     <table>
         <thead>
@@ -17,16 +17,16 @@
         {% for emprunt in emprunts %}
             <tr>
                 <td><a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">{{ emprunt.id }}</a></td>
-                <td>{% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if emprunt.date %}{{ emprunt.date|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ emprunt.user }}</td>
                 <td>{{ emprunt.exemplaireemprunt}}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">voir</a>
+                            <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">éditer</a>
+                            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">Éditer</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('emprunt_new') }}">Créér un nouvel emprunt</a>
+            <a href="{{ path('emprunt_new') }}">Créer un nouvel emprunt</a>
         </li>
     </ul>
 {% endblock %}

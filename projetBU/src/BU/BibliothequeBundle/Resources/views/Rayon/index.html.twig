@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste rayon</h1>
+    <h1>Liste des rayons</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Designation</th>
+                <th>Désignation</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,10 +19,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('rayon_show', { 'id': rayon.id }) }}">voir</a>
+                            <a href="{{ path('rayon_show', { 'id': rayon.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('rayon_edit', { 'id': rayon.id }) }}">éditer</a>
+                            <a href="{{ path('rayon_edit', { 'id': rayon.id }) }}">Éditer</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('rayon_new') }}">Créér un nouveau rayon</a>
+            <a href="{{ path('rayon_new') }}">Créer un nouveau rayon</a>
         </li>
     </ul>
 {% endblock %}

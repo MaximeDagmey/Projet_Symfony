@@ -24,20 +24,7 @@ class UserController extends Controller
 
         $users = $em->getRepository('BUBibliothequeBundle:User')->findAll();
 
-        return $this->render('BUBibliothequeBundle:User:index.html.twig', array(
-            'users' => $users,
-        ));
-    }
-    
-    public function listEmpruntsAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $users = $em->getRepository('BUBibliothequeBundle:User')->findAll();
-
-        return $this->render('BUBibliothequeBundle:User:index.html.twig', array(
-            'users' => $users,
-        ));
+        return $this->render('BUBibliothequeBundle:User:index.html.twig', array('users' => $users,));
     }
     
     public function SearchApproAction(Request $request)
@@ -112,11 +99,11 @@ class UserController extends Controller
     public function showAction(User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-
-        return $this->render('BUBibliothequeBundle:User:show.html.twig', array(
-            'user' => $user,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        
+        $em = $this->getDoctrine()->getManager();
+        $emprunts = $em->getRepository('BUBibliothequeBundle:User')->getListeEmpruntsByUserId($user->getId());
+        
+        return $this->render('BUBibliothequeBundle:User:show.html.twig', array('user' => $user,'delete_form' => $deleteForm->createView(), 'emprunts' => $emprunts,));
     }
 
     /**

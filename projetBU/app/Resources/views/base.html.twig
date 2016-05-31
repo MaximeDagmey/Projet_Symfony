@@ -3,7 +3,35 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        <style>
+            table 
+            {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+            }
+
+            td, th 
+            {
+                border: 1px solid #ddd;
+                text-align: left;
+                padding: 5px;
+            }
+
+            tr:nth-child(even){background-color: #f2f2f2}
+
+             tr:hover {background-color: #ddd;}
+
+             th 
+            {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                background-color: #0047b3;
+                color: white;
+            }
+
+        </style>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>

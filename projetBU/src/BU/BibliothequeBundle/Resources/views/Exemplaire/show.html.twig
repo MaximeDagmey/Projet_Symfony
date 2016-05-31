@@ -10,7 +10,7 @@
                 <td>{{ exemplaire.id }}</td>
             </tr>
             <tr>
-                <th>Designation</th>
+                <th>Désignation</th>
                 <td>{{ exemplaire.designation }}</td>
             </tr>
         </tbody>
@@ -18,10 +18,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('exemplaire_index') }}">Retour à la liste</a>
+            <a href="{{ path('exemplaire_index') }}">Retourner à la liste</a>
         </li>
         <li>
-            <a href="{{ path('exemplaire_edit', { 'id': exemplaire.id }) }}">Editer</a>
+            <a href="{{ path('exemplaire_edit', { 'id': exemplaire.id }) }}">Éditer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

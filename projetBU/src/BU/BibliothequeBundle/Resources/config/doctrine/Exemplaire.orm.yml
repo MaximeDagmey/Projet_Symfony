@@ -11,13 +11,14 @@ BU\BibliothequeBundle\Entity\Exemplaire:
     fields:
         designation:
             type: string
-            length: 4     
+            length: 4    
+             
     manyToOne:
         livreexemplaire:
-            targetEntity: Livre
-            inversedBy: exemplaires
-            cascade: [ persist ]
-            joinColumn:
+           targetEntity: Livre
+           inversedBy: exemplaires
+           cascade: [ persist ]
+           joinColumn:
               onDelete: cascade
         etagere:
             targetEntity: Etagere
@@ -27,9 +28,9 @@ BU\BibliothequeBundle\Entity\Exemplaire:
               onDelete: cascade
     oneToMany:
         livreemprunt:
-            targetEntity: Emprunt
-            mappedBy:  exemplaireemprunt
+           targetEntity: Emprunt
+           mappedBy:  exemplaireemprunt
         livreempruntarch:
-            targetEntity: Archivage
-            mappedBy:  exemplaireempruntarch
+           targetEntity: Archivage
+           mappedBy:  exemplaireempruntarch
     lifecycleCallbacks: {  }

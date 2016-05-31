@@ -3,16 +3,16 @@
 {% block body %}
     <h1><u>Liste des utilisateurs</u></h1>
 
-    <table>
+    <table id="table">
         <thead>
             <tr>
-                <th>| Id |</th>
-                <th>| Nom |</th>
-                <th>| Prenom |</th>
-                <th>| Password |</th>
-                <th>| Cycle |</th>
-                <th>| Faculté |</th>
-                <th>| Actions |</th>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Password</th>
+                <th>Cycle</th>
+                <th>Faculté</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,10 +27,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">voir</a>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">éditer</a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}">Éditer</a>
                         </li>
                     </ul>
                 </td>
@@ -38,7 +38,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    
     <ul>
         <li>
             <a href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>

@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Utilisateur</h1>
 
-    <table>
+    <table id="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -14,7 +14,7 @@
                 <td>{{ user.nom }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
+                <th>Prénom</th>
                 <td>{{ user.prenom }}</td>
             </tr>
             <tr>
@@ -31,13 +31,45 @@
             </tr>
         </tbody>
     </table>
+    
+    <h2>Situation des prêts de l'utilisateur :</h2>
 
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Livre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emprunt in emprunts %}
+            <tr>
+                <td><a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">{{ emprunt.id }}</a></td>
+                <td>{% if emprunt.date %}{{ emprunt.date|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ emprunt.exemplaireemprunt}}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">Éditer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>    
+    
     <ul>
         <li>
             <a href="{{ path('user_index') }}">Retourner à la liste</a>
         </li>
         <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Editer</a>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">Éditer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

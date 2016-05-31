@@ -10,7 +10,7 @@
                 <td>{{ rayon.id }}</td>
             </tr>
             <tr>
-                <th>Designation</th>
+                <th>Désignation</th>
                 <td>{{ rayon.designation }}</td>
             </tr>
         </tbody>
@@ -21,7 +21,7 @@
             <a href="{{ path('rayon_index') }}">Retourner à la liste</a>
         </li>
         <li>
-            <a href="{{ path('rayon_edit', { 'id': rayon.id }) }}">Editer</a>
+            <a href="{{ path('rayon_edit', { 'id': rayon.id }) }}">Éditer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

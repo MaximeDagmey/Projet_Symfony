@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Chercher emprunt par utilisateur ou livre</h1>
+    <h1>Chercher un emprunt par utilisateur ou livre</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -29,10 +29,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">voir</a>
+                            <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">éditer</a>
+                            <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">Éditer</a>
                         </li>
                     </ul>
                 </td>

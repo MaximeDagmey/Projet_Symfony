@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste thème</h1>
+    <h1>Liste des thèmes</h1>
 
     <table>
         <thead>
@@ -19,10 +19,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('theme_show', { 'id': theme.id }) }}">voir</a>
+                            <a href="{{ path('theme_show', { 'id': theme.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('theme_edit', { 'id': theme.id }) }}">éditer</a>
+                            <a href="{{ path('theme_edit', { 'id': theme.id }) }}">Éditer</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('theme_new') }}">Créér un nouveau thème</a>
+            <a href="{{ path('theme_new') }}">Créer un nouveau thème</a>
         </li>
     </ul>
 {% endblock %}
