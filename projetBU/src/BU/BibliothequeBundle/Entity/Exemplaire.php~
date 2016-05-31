@@ -188,4 +188,43 @@ class Exemplaire
     public function __toString(){
         return $this->getDesignation()." ".$this->getLivreexemplaire();
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $livreempruntarch;
+
+
+    /**
+     * Add livreempruntarch
+     *
+     * @param \BU\BibliothequeBundle\Entity\Archivage $livreempruntarch
+     *
+     * @return Exemplaire
+     */
+    public function addLivreempruntarch(\BU\BibliothequeBundle\Entity\Archivage $livreempruntarch)
+    {
+        $this->livreempruntarch[] = $livreempruntarch;
+
+        return $this;
+    }
+
+    /**
+     * Remove livreempruntarch
+     *
+     * @param \BU\BibliothequeBundle\Entity\Archivage $livreempruntarch
+     */
+    public function removeLivreempruntarch(\BU\BibliothequeBundle\Entity\Archivage $livreempruntarch)
+    {
+        $this->livreempruntarch->removeElement($livreempruntarch);
+    }
+
+    /**
+     * Get livreempruntarch
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLivreempruntarch()
+    {
+        return $this->livreempruntarch;
+    }
 }

@@ -28,6 +28,58 @@ class UserController extends Controller
             'users' => $users,
         ));
     }
+    
+    public function listEmpruntsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('BUBibliothequeBundle:User')->findAll();
+
+        return $this->render('BUBibliothequeBundle:User:index.html.twig', array(
+            'users' => $users,
+        ));
+    }
+    
+    public function SearchApproAction(Request $request)
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->remove('prenom');
+        $form->remove('password');
+        $form->remove('cycle');
+        $form->remove('faculte');
+        $form->handleRequest($request);
+        $results = null;
+        $message = null;
+        $nbresults = null;
+
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $em = $this->getDoctrine()->getManager();
+            $results = $em->getRepository('BUBibliothequeBundle:User')->findUserByNomApproximatif($user->getNom());
+            if(empty($results))
+            {
+                $message = "Aucun utilisateur connu pour cette partie de nom";
+            }
+            else
+            {
+                $nbresults = count($results);
+                if ($nbresults > 1) 
+                {
+                    $message = strval($nbresults)." résultats trouvés :";
+                }
+                else 
+                {
+                    $message = strval($nbresults)." seul résultat trouvé :";
+                }
+
+            }
+
+            return $this->render('BUBibliothequeBundle:User:FindByNomApproximatif.html.twig', array('results' => $results,'form' => $form->createView(),'message' => $message,));
+        }
+
+        return $this->render('BUBibliothequeBundle:User:FindByNomApproximatif.html.twig', array('results' => $results,'form' => $form->createView(),'message' => $message,));
+    }
 
     /**
      * Creates a new User entity.

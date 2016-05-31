@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste utilisateur</h1>
+    <h1><u>Liste des utilisateurs</u></h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Password</th>
-                <th>Cycle</th>
-                <th>Actions</th>
+                <th>| Id |</th>
+                <th>| Nom |</th>
+                <th>| Prenom |</th>
+                <th>| Password |</th>
+                <th>| Cycle |</th>
+                <th>| Faculté |</th>
+                <th>| Actions |</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.password }}</td>
                 <td>{{ user.cycle }}</td>
+                <td>{{ user.faculte }}</td>
                 <td>
                     <ul>
                         <li>
@@ -39,7 +41,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('user_new') }}">Créér un nouvel utilisateur</a>
+            <a href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
         </li>
     </ul>
 {% endblock %}

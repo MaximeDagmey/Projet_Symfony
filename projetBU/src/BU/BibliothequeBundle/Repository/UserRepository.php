@@ -10,4 +10,10 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findUserByNomApproximatif($sousChaine)
+    {
+        $queryBuider = $this->createQueryBuilder('s');
+		$queryBuider->where('s.nom LIKE :sousChaine')->setParameter('sousChaine', '%'.$sousChaine.'%');
+		return $queryBuider->getQuery()->getResult();
+	}
 }

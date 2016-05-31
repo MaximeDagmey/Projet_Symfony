@@ -22,3 +22,8 @@ user_delete:
     path:     /{id}/delete
     defaults: { _controller: "BUBibliothequeBundle:User:delete" }
     methods:  DELETE
+
+user_Find_By_Nom_Approximatif:
+    path:     /SearchAppro  
+    defaults: { _controller: "BUBibliothequeBundle:User:SearchAppro" }
+    methods:  [GET, POST]

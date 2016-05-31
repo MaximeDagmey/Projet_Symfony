@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Rechercher un utilisateur</h1>
+{{ form_start(form) }}
+    {{ form_widget(form) }} <input type="submit" value="Chercher" /> 
+{{ form_end(form) }}
+    <br><h1><u>{{ message }}</u></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>| Id |</th>
+                <th>| Nom |</th>
+                <th>| Prenom |</th>
+                <th>| Password |</th>
+                <th>| Cycle |</th>
+                <th>| Faculté |</th>
+                <th>| Actions |</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': result.id }) }}">{{ result.id }}</a></td>
+                <td>{{ result.nom }}</td>
+                <td>{{ result.prenom }}</td>
+                <td>{{ result.password }}</td>
+                <td>{{ result.cycle }}</td>
+                <td>{{ result.faculte }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_show', { 'id': result.id }) }}">voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_edit', { 'id': result.id }) }}">éditer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -286,4 +286,43 @@ class User
     {
         return $this->getNom()." ". $this->getPrenom();
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $empruntuserarch;
+
+
+    /**
+     * Add empruntuserarch
+     *
+     * @param \BU\BibliothequeBundle\Entity\Archivage $empruntuserarch
+     *
+     * @return User
+     */
+    public function addEmpruntuserarch(\BU\BibliothequeBundle\Entity\Archivage $empruntuserarch)
+    {
+        $this->empruntuserarch[] = $empruntuserarch;
+
+        return $this;
+    }
+
+    /**
+     * Remove empruntuserarch
+     *
+     * @param \BU\BibliothequeBundle\Entity\Archivage $empruntuserarch
+     */
+    public function removeEmpruntuserarch(\BU\BibliothequeBundle\Entity\Archivage $empruntuserarch)
+    {
+        $this->empruntuserarch->removeElement($empruntuserarch);
+    }
+
+    /**
+     * Get empruntuserarch
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmpruntuserarch()
+    {
+        return $this->empruntuserarch;
+    }
 }
