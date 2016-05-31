@@ -9,6 +9,7 @@
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Notice</th>
+                <th>Thème(s)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,6 +19,11 @@
                 <td><a href="{{ path('livre_show', { 'id': livre.id }) }}">{{ livre.id }}</a></td>
                 <td>{{ livre.titre }}</td>
                 <td>{{ livre.notice }}</td>
+                <td>
+                    {% for theme in livre.themes %}
+                        {{ theme.description}},                            
+                    {% endfor %}
+                </td>
                 <td>
                     <ul>
                         <li>

@@ -17,6 +17,14 @@
                 <th>Notice</th>
                 <td>{{ livre.notice }}</td>
             </tr>
+            <tr>
+                <th>Thème(s)</th>
+                <td>
+                    {% for theme in livre.themes %}
+                        {{ theme.description}},                            
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
