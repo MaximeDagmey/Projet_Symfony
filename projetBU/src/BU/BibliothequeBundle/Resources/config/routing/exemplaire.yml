@@ -1,3 +1,8 @@
+exemplaire_ExempLivre:
+    path:     /livres/
+    defaults: { _controller: "BUBibliothequeBundle:Exemplaire:ExempLivre" }
+    methods:  [GET, POST]
+
 exemplaire_index:
     path:     /
     defaults: { _controller: "BUBibliothequeBundle:Exemplaire:index" }

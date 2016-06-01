@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BU\BibliothequeBundle\Entity\Exemplaire;
 use BU\BibliothequeBundle\Form\ExemplaireType;
+use BU\BibliothequeBundle\Entity\Livre;
+use BU\BibliothequeBundle\Form\LivreType;
 
 /**
  * Exemplaire controller.
@@ -18,6 +20,42 @@ class ExemplaireController extends Controller
      * Lists all Exemplaire entities.
      *
      */
+     
+    public function ExempLivreAction(Request $request)
+    {        
+        $livre = new Livre();
+        $form = $this->createForm(LivreType::class, $livre);
+        $form->remove('themes');
+        $form->remove('notice');
+        $form->handleRequest($request);
+        $exemplaires = null;
+        $message = null;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findDispoLivre($livre->getTitre());
+             //$exemplaires = $em->getRepository('BUBibliothequeBundle:Emprunt')->findDispoLivre($livre->getTitre());
+            if(empty($exemplaires)){
+                $message = "Aucun exemplaire n'est disponible";
+            }
+            else {
+                $message = "Un ou des exemplaires sont disponibles pour ce livre";
+            }
+
+              return $this->render('BUBibliothequeBundle:Exemplaire:livres.html.twig', array(
+                'exemplaires' => $exemplaires,
+                'form' => $form->createView(),
+                'message' => $message,
+               ));
+        }
+
+        return $this->render('BUBibliothequeBundle:Exemplaire:livres.html.twig', array(
+            'exemplaires' => $exemplaires,
+            'form' => $form->createView(),
+             'message' => $message,
+        ));   
+    }
+    
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -125,4 +163,6 @@ class ExemplaireController extends Controller
             ->getForm()
         ;
     }
+    
+    
 }
