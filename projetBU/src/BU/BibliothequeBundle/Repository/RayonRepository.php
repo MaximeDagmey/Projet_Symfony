@@ -10,4 +10,11 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class RayonRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    public function findRayonLivre($idR){
+		$query = $this->getEntityManager()->createQuery("SELECT e FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e, BUBibliothequeBundle:Etagere et, BUBibliothequeBundle:Rayon r  
+                                                        WHERE r.id = :idR and l.id = e.livreexemplaire and e.etagere = et.id and et.rayon = r.id");
+        $query->setParameter('idR', $idR);
+        return $query->getResult();
+	}
 }

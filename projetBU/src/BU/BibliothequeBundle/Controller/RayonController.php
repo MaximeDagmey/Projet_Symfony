@@ -7,17 +7,72 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BU\BibliothequeBundle\Entity\Rayon;
 use BU\BibliothequeBundle\Form\RayonType;
+use BU\BibliothequeBundle\Entity\Livre;
+use BU\BibliothequeBundle\Form\LivreType;
 
 /**
  * Rayon controller.
  *
  */
+        
 class RayonController extends Controller
 {
     /**
      * Lists all Rayon entities.
      *
      */
+     
+     public function RayonLivreAction(Rayon $rayon)
+    {        
+        //$livre = new Livre();
+        //$rayon = new Rayon();
+        $form = $this->createForm(RayonType::class, $rayon);
+        $form->remove('themes');
+        $form->remove('notice');/*
+        $form->handleRequest($request);*/
+        $exemplaires = null;
+        $message = null;
+        $em = $this->getDoctrine()->getManager();
+        
+        $exemplaires = $em->getRepository('BUBibliothequeBundle:Rayon')->findRayonLivre($rayon->getId());
+        
+        if(empty($exemplaires)){
+                $message = "Aucun exemplaire n'est disponible";
+            }
+            else {
+                $message = "Un ou des exemplaires sont disponibles pour ce livre";
+            }
+
+            return $this->render('BUBibliothequeBundle:Rayon:livre.html.twig', array(
+            'exemplaires' => $exemplaires,
+            'form' => $form->createView(),
+            'message' => $message,
+            ));
+               
+        /*if ($form->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Rayon:')->findRayonLivre($rayon->getId());
+            if(empty($exemplaires)){
+                $message = "Aucun exemplaire n'est disponible";
+            }
+            else {
+                $message = "Un ou des exemplaires sont disponibles pour ce livre";
+            }
+
+              return $this->render('BUBibliothequeBundle:Rayon:livre.html.twig', array(
+                'exemplaires' => $exemplaires,
+                'form' => $form->createView(),
+                'message' => $message,
+               ));
+        }
+
+        return $this->render('BUBibliothequeBundle:Rayon:livre.html.twig', array(
+            'exemplaires' => $exemplaires,
+            'form' => $form->createView(),
+             'message' => $message,
+        ));*/
+    }
+    
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();

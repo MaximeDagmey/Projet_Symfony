@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des livres</h1>
+
+    <h3>{{ message }}</h3>
+    <h2>Liste</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Désignation</th>
+                <th>Livre</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exemplaire in exemplaires %}
+            <tr>
+                <td><a href="{{ path('exemplaire_show', { 'id': exemplaire.id }) }}">{{ exemplaire.id }}</a></td>
+                <td>{{ exemplaire.designation }}</td>
+                <td>{{ exemplaire.livreexemplaire}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <ul>
+        <li>
+            <a href="{{ path('rayon_index') }}">Retouner à la liste</a>
+        </li>
+    </ul>
+{% endblock %}
