@@ -22,3 +22,13 @@ livre_delete:
     path:     /{id}/delete
     defaults: { _controller: "BUBibliothequeBundle:Livre:delete" }
     methods:  DELETE
+    
+user_Find_By_Auteur:
+    path:     /SearchByAuteur  
+    defaults: { _controller: "BUBibliothequeBundle:Livre:GetLivresByAuteur" }
+    methods:  [GET, POST]
+    
+user_Find_By_Titre_Approximatif:
+    path:     /SearchByTitreAppro  
+    defaults: { _controller: "BUBibliothequeBundle:Livre:GetLivresByTitreApproximatif" }
+    methods:  [GET, POST]

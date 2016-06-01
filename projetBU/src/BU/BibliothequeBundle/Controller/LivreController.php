@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BU\BibliothequeBundle\Entity\Livre;
 use BU\BibliothequeBundle\Form\LivreType;
+use BU\BibliothequeBundle\Entity\Auteur;
+use BU\BibliothequeBundle\Form\AuteurType;
 
 /**
  * Livre controller.
@@ -125,4 +127,83 @@ class LivreController extends Controller
             ->getForm()
         ;
     }
+    
+    public function GetLivresByAuteurAction(Request $request)
+    {   
+        $auteur = new Auteur();
+        $form = $this->createForm(AuteurType::class, $auteur);
+        $form->remove('prenom');
+        $form->remove('livreauteur');
+        $form->handleRequest($request);
+        $livres = null;
+        $message = null;
+        $titre = "Recherche de livres par nom d'auteur";
+
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $em = $this->getDoctrine()->getManager();
+            $livres = $em->getRepository('BUBibliothequeBundle:Livre')->findLivreByAuteur($auteur->getNom());
+            if(empty($livres))
+            {
+                $message = "Aucun livre connu pour cet auteur";
+            }
+            else
+            {
+                $nblivres = count($livres);
+                if ($nblivres > 1) 
+                {
+                    $message = strval($nblivres)." résultats trouvés :";
+                }
+                else 
+                {
+                    $message = strval($nblivres)." seul résultat trouvé :";
+                }
+
+            }
+
+            return $this->render('BUBibliothequeBundle:Livre:search.html.twig', array('livres' => $livres,'form' => $form->createView(),'message' => $message, 'titre' => $titre,));
+        }
+
+        return $this->render('BUBibliothequeBundle:Livre:search.html.twig', array('livres' => $livres,'form' => $form->createView(),'message' => $message, 'titre' => $titre,));
+    }
+    
+    public function GetLivresByTitreApproximatifAction(Request $request)
+    {   
+        $livre = new Livre();
+        $form = $this->createForm(LivreType::class, $livre);
+        $form->remove('notice');
+        $form->remove('themes');
+        $form->handleRequest($request);
+        $livres = null;
+        $message = null;
+        $titre = "Recherche de livre par titre";
+
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $em = $this->getDoctrine()->getManager();
+            $livres = $em->getRepository('BUBibliothequeBundle:Livre')->findLivreByTitreApproximatif($livre->getTitre());
+            if(empty($livres))
+            {
+                $message = "Aucun livre connu pour ce titre";
+            }
+            else
+            {
+                $nblivres = count($livres);
+                if ($nblivres > 1) 
+                {
+                    $message = strval($nblivres)." résultats trouvés :";
+                }
+                else 
+                {
+                    $message = strval($nblivres)." seul résultat trouvé :";
+                }
+
+            }
+
+            return $this->render('BUBibliothequeBundle:Livre:search.html.twig', array('livres' => $livres,'form' => $form->createView(),'message' => $message, 'titre' => $titre,));
+        }
+
+        return $this->render('BUBibliothequeBundle:Livre:search.html.twig', array('livres' => $livres,'form' => $form->createView(),'message' => $message, 'titre' => $titre,));
+    }
+    
 }

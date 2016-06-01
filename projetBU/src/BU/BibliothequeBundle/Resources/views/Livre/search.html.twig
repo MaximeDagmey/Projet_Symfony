@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ titre }}</h1>
+    {{ form_start(form) }}
+        {{ form_widget(form) }} <input type="submit" value="Chercher" /> 
+    {{ form_end(form) }}
+    <br><h1><u>{{ message }}</u></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Notice</th>
+                <th>Thème(s)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr>
+                <td><a href="{{ path('livre_show', { 'id': livre.id }) }}">{{ livre.id }}</a></td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.notice }}</td>
+                <td>
+                    {% for theme in livre.themes %}
+                        {{ theme.description}},                            
+                    {% endfor %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('livre_show', { 'id': livre.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('livre_edit', { 'id': livre.id }) }}">Éditer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

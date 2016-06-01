@@ -66,21 +66,16 @@ class EmpruntController extends Controller
         $form->remove('notice');
         $form->handleRequest($request);
         $emprunts = null;
+        $titre = "Recherche d'emprunts par livre";
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findReservationLivre($livre->getTitre());
 
-              return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array(
-                'emprunts' => $emprunts,
-                'form' => $form->createView(),
-               ));
+              return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array('emprunts' => $emprunts,'form' => $form->createView(), 'titre' => $titre,));
         }
 
-        return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array(
-            'emprunts' => $emprunts,
-            'form' => $form->createView(),
-        ));
+        return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array('emprunts' => $emprunts,'form' => $form->createView(), 'titre' => $titre,));
     }
     
        public function dispolivreAction(Request $request)
@@ -125,20 +120,16 @@ class EmpruntController extends Controller
          $form->remove('faculte');
         $form->handleRequest($request);
         $emprunts = null;
+        $titre = "Recherche d'emprunts par utilisateur";
+        
         if ($form->isSubmitted() && $form->isValid()) {
              $em = $this->getDoctrine()->getManager();
              $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findReservationUser($user->getNom(),$user->getPrenom());
 
-              return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array(
-                'emprunts' => $emprunts,
-                'form' => $form->createView(),
-               ));
+              return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array('emprunts' => $emprunts,'form' => $form->createView(), 'titre' => $titre,));
         }
 
-        return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array(
-            'emprunts' => $emprunts,
-            'form' => $form->createView(),
-        ));
+        return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array('emprunts' => $emprunts,'form' => $form->createView(), 'titre' => $titre, ));
     }
 
     /**

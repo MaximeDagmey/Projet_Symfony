@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Chercher un emprunt par utilisateur ou livre</h1>
+    <h1>{{ titre }}</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Chercher" />
     {{ form_end(form) }}
-    <h2>Liste emprunt</h2>
+    <h2>Liste des emprunts</h2>
 
     <table>
         <thead>
@@ -23,7 +23,7 @@
         {% for emprunt in emprunts %}
             <tr>
                 <td><a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">{{ emprunt.id }}</a></td>
-                <td>{% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if emprunt.date %}{{ emprunt.date|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ emprunt.user }}</td>
                 <td>{{ emprunt.exemplaireemprunt}}</td>
                 <td>
