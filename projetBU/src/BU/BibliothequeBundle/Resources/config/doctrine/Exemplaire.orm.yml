@@ -26,4 +26,11 @@ BU\BibliothequeBundle\Entity\Exemplaire:
             cascade: [ persist ]
             joinColumn:
               onDelete: cascade
+    oneToMany:
+        livreemprunt:
+            targetEntity: Emprunt
+            mappedBy:  livre
+        livreempruntarch:
+            targetEntity: Archivage
+            mappedBy:  livre
     lifecycleCallbacks: {  }

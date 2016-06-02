@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Date</th>
+                <th>Livre</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
                 <td>{% if reservation.date %}{{ reservation.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ reservation.livre }}</td>
                 <td>
                     <ul>
                         <li>

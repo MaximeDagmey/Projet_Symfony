@@ -63,8 +63,8 @@ class EmpruntController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($emprunt->getLivre()->getTitre());
-            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($emprunt->getLivre()->getTitre());
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
+            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
             if( $reservation >= $exemplaires ){
                 $message = "Le livre n'est disponible";
                  return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(

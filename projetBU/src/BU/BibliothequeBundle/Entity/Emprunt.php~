@@ -94,7 +94,7 @@ class Emprunt
      *
      * @return Emprunt
      */
-    public function setLivre(\BU\BibliothequeBundle\Entity\Livre $livre = null)
+    public function setLivre(\BU\BibliothequeBundle\Entity\Exemplaire $livre = null)
     {
         $this->livre = $livre;
 

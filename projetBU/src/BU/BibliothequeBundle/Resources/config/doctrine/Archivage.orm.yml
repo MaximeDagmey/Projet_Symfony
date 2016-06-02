@@ -9,7 +9,7 @@ BU\BibliothequeBundle\Entity\Archivage:
                 strategy: AUTO
     manyToOne:
         livre:
-            targetEntity: Livre
+            targetEntity: Exemplaire
             inversedBy: livreempruntarch
             cascade: [ persist ]
             joinColumn:
@@ -23,6 +23,8 @@ BU\BibliothequeBundle\Entity\Archivage:
     fields:
         date:
            type: date
+        dateretour:
+            type: date
     lifecycleCallbacks: {  }
             
 

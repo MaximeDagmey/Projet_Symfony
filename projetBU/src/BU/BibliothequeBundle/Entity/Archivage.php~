@@ -167,4 +167,33 @@ class Archivage
     {
         return $this->user;
     }
+    /**
+     * @var \DateTime
+     */
+    private $dateretour;
+
+
+    /**
+     * Set dateretour
+     *
+     * @param \DateTime $dateretour
+     *
+     * @return Archivage
+     */
+    public function setDateretour($dateretour)
+    {
+        $this->dateretour = $dateretour;
+
+        return $this;
+    }
+
+    /**
+     * Get dateretour
+     *
+     * @return \DateTime
+     */
+    public function getDateretour()
+    {
+        return $this->dateretour;
+    }
 }
