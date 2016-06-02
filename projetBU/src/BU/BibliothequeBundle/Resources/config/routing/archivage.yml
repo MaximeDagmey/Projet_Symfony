@@ -8,11 +8,6 @@ archivage_show:
     defaults: { _controller: "BUBibliothequeBundle:Archivage:show" }
     methods:  GET
 
-archivage_new:
-    path:     /new
-    defaults: { _controller: "BUBibliothequeBundle:Archivage:new" }
-    methods:  [GET, POST]
-
 archivage_edit:
     path:     /{id}/edit
     defaults: { _controller: "BUBibliothequeBundle:Archivage:edit" }

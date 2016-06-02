@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste des Archivages</h1>
+    <h1>Liste des emprunts archivés</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Date</th>
+                <th>Livre</th>
+                <th>Utilisateur</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +18,8 @@
             <tr>
                 <td><a href="{{ path('archivage_show', { 'id': archivage.id }) }}">{{ archivage.id }}</a></td>
                 <td>{% if archivage.date %}{{ archivage.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ archivage.livre }}</td>
+                <td>{{ archivage.user}}</td>
                 <td>
                     <ul>
                         <li>
@@ -33,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('archivage_new') }}">Créer un nouvel archivage</a>
+            <a href="{{ path('emprunt_index') }}">Retour à la liste des emprunts</a>
         </li>
     </ul>
 {% endblock %}

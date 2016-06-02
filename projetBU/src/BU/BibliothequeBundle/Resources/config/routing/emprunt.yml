@@ -27,6 +27,7 @@ emprunt_livredispo:
     path:     /livredispo   
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:dispolivre" }
     methods:  [GET, POST]
+    
 emprunt_user:
     path:     /user
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:empruntparuser" }
@@ -36,3 +37,8 @@ emprunt_delete:
     path:     /{id}/delete
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:delete" }
     methods:  DELETE
+
+emprunt_retour:
+    path:    /retour/{id}
+    defaults: { _controller: "BUBibliothequeBundle:Emprunt:retour"}
+

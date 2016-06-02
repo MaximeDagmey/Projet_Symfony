@@ -7,35 +7,7 @@
         {{ form_widget(form) }}
         <input type="submit" value="Chercher" />
     {{ form_end(form) }}
-    <h3>{{ message }}</h3>
-    <h2>Liste des exemplaires disponibles</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Désignation</th>
-                <th>Livre</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for exemplaire in exemplaires %}
-            <tr>
-                <td><a href="{{ path('exemplaire_show', { 'id': exemplaire.id }) }}">{{ exemplaire.id }}</a></td>
-                <td>{{ exemplaire.designation }}</td>
-                <td>{{ exemplaire.livreexemplaire}}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('emprunt_new') }}">Emprunter</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    
+    <h2>{{ message }}</h3> 
     <ul>
         <li>
             <a href="{{ path('emprunt_index') }}">Retouner à la liste</a>

@@ -25,11 +25,5 @@ class EmpruntRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
 	}
      
-   public function findDispoLivre($titre){
-		$query = $this->getEntityManager()->createQuery("SELECT e FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e, BUBibliothequeBundle:Emprunt s 
-                                                        WHERE l.titre = :title and l.id = e.livreexemplaire and e.id <> s.exemplaireemprunt");
-		$query->setParameter('title', $titre);
-        return $query->getResult();
-	}
 }
 

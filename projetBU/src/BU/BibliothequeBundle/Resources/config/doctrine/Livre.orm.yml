@@ -21,7 +21,7 @@ BU\BibliothequeBundle\Entity\Livre:
             inversedBy: livretheme
         auteurs:
             targetEntity: Auteur
-            inversedBy: livreauteur
+            mappedBy: livreauteur
     oneToMany:
         exemplaires:
             targetEntity: Exemplaire

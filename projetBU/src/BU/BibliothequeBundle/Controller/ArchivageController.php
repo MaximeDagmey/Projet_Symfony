@@ -30,30 +30,6 @@ class ArchivageController extends Controller
     }
 
     /**
-     * Creates a new Archivage entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $archivage = new Archivage();
-        $form = $this->createForm(ArchivageType::class, $archivage);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($archivage);
-            $em->flush();
-
-            return $this->redirectToRoute('archivage_show', array('id' => $archivage->getId()));
-        }
-
-        return $this->render('BUBibliothequeBundle:Archivage:new.html.twig', array(
-            'archivage' => $archivage,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
      * Finds and displays a Archivage entity.
      *
      */

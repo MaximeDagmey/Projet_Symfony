@@ -13,6 +13,10 @@
                 <th>Date</th>
                 <td>{% if emprunt.date %}{{ emprunt.date|date('Y-m-d') }}{% endif %}</td>
             </tr>
+              <tr>
+                <th>Livre</th>
+                <td>{{ emprunt.livre }}</td>
+            </tr>
         </tbody>
     </table>
 

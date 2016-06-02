@@ -11,6 +11,7 @@ use BU\BibliothequeBundle\Form\LivreType;
 use BU\BibliothequeBundle\Form\UserType;
 use BU\BibliothequeBundle\Entity\Livre;
 use BU\BibliothequeBundle\Entity\User;
+use BU\BibliothequeBundle\Entity\Archivage;
 
 /**
  * Emprunt controller.
@@ -45,7 +46,6 @@ class EmpruntController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-             $em->getRepository('BUBibliothequeBundle:Emprunt')->findExemplaire($emprunt->getExemplaireemprunt()->getId());
             $em->persist($emprunt);
             $em->flush();
 
@@ -86,12 +86,14 @@ class EmpruntController extends Controller
         $form->remove('notice');
         $form->handleRequest($request);
         $exemplaires = null;
+        $reservation = null;
         $message = null;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $exemplaires = $em->getRepository('BUBibliothequeBundle:Emprunt')->findDispoLivre($livre->getTitre());
-            if(empty($exemplaires)){
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($livre->getTitre());
+            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findExemplaireLivre($livre->getTitre());
+            if($reservation >= $exemplaires ){
                 $message = "Aucun exemplaire n'est disponible";
             }
             else {
@@ -99,14 +101,12 @@ class EmpruntController extends Controller
             }
 
               return $this->render('BUBibliothequeBundle:Emprunt:dispo.html.twig', array(
-                'exemplaires' => $exemplaires,
                 'form' => $form->createView(),
                 'message' => $message,
                ));
         }
 
         return $this->render('BUBibliothequeBundle:Emprunt:dispo.html.twig', array(
-            'exemplaires' => $exemplaires,
             'form' => $form->createView(),
              'message' => $message,
         ));
@@ -169,6 +169,20 @@ class EmpruntController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+    
+     public function retourAction($id)
+    {
+       $em = $this->getDoctrine()->getManager();
+       $emprunt = $em->getRepository('BUBibliothequeBundle:Emprunt')->find($id);
+       $archivage = new Archivage;
+       $archivage->setDate($emprunt->getDate());
+       $archivage->setLivre($emprunt->getLivre());
+       $archivage->setUser($emprunt->getUser());
+       $em->persist($archivage);
+       $em->remove($emprunt);
+       $em->flush();
+        return $this->redirectToRoute('emprunt_index');
     }
 
     /**

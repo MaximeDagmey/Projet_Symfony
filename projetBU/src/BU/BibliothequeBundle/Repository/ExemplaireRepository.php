@@ -10,10 +10,10 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class ExemplaireRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findDispoLivre($titre){
-		$query = $this->getEntityManager()->createQuery("SELECT e FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e 
+    public function findExemplaireLivre($titre){
+		$query = $this->getEntityManager()->createQuery("SELECT COUNT(e) FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e 
                                                         WHERE l.titre = :title and l.id = e.livreexemplaire");
 		$query->setParameter('title', $titre);
-        return $query->getResult();
+       return $query->getSingleScalarResult();
 	}
 }

@@ -289,7 +289,7 @@ class User
      *
      * @return User
      */
-    public function addUserreservation(\BU\BibliothequeBundle\Entity\Rerservation $userreservation)
+    public function addUserreservation(\BU\BibliothequeBundle\Entity\Reservation $userreservation)
     {
         $this->userreservation[] = $userreservation;
 
@@ -301,7 +301,7 @@ class User
      *
      * @param \BU\BibliothequeBundle\Entity\Rerservation $userreservation
      */
-    public function removeUserreservation(\BU\BibliothequeBundle\Entity\Rerservation $userreservation)
+    public function removeUserreservation(\BU\BibliothequeBundle\Entity\Reservation $userreservation)
     {
         $this->userreservation->removeElement($userreservation);
     }

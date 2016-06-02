@@ -18,5 +18,5 @@ BU\BibliothequeBundle\Entity\Auteur:
     manyToMany:
         livreauteur:
             targetEntity: Livre
-            mappedBy: auteurs
+            inversedBy: auteurs
     lifecycleCallbacks: {  }
