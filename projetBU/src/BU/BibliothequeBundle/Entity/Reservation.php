@@ -3,9 +3,9 @@
 namespace BU\BibliothequeBundle\Entity;
 
 /**
- * Archivage
+ * Reservation
  */
-class Archivage
+class Reservation
 {
     /**
      * @var integer
@@ -18,14 +18,14 @@ class Archivage
     private $date;
 
     /**
-     * @var \BU\BibliothequeBundle\Entity\Exemplaire
+     * @var \BU\BibliothequeBundle\Entity\Livre
      */
-    private $exemplaireempruntarch;
+    private $livre;
 
     /**
      * @var \BU\BibliothequeBundle\Entity\User
      */
-    private $userarch;
+    private $user;
 
 
     /**
@@ -43,7 +43,7 @@ class Archivage
      *
      * @param \DateTime $date
      *
-     * @return Archivage
+     * @return Reservation
      */
     public function setDate($date)
     {
@@ -63,69 +63,11 @@ class Archivage
     }
 
     /**
-     * Set exemplaireempruntarch
-     *
-     * @param \BU\BibliothequeBundle\Entity\Exemplaire $exemplaireempruntarch
-     *
-     * @return Archivage
-     */
-    public function setExemplaireempruntarch(\BU\BibliothequeBundle\Entity\Exemplaire $exemplaireempruntarch = null)
-    {
-        $this->exemplaireempruntarch = $exemplaireempruntarch;
-
-        return $this;
-    }
-
-    /**
-     * Get exemplaireempruntarch
-     *
-     * @return \BU\BibliothequeBundle\Entity\Exemplaire
-     */
-    public function getExemplaireempruntarch()
-    {
-        return $this->exemplaireempruntarch;
-    }
-
-    /**
-     * Set userarch
-     *
-     * @param \BU\BibliothequeBundle\Entity\User $userarch
-     *
-     * @return Archivage
-     */
-    public function setUserarch(\BU\BibliothequeBundle\Entity\User $userarch = null)
-    {
-        $this->userarch = $userarch;
-
-        return $this;
-    }
-
-    /**
-     * Get userarch
-     *
-     * @return \BU\BibliothequeBundle\Entity\User
-     */
-    public function getUserarch()
-    {
-        return $this->userarch;
-    }
-    /**
-     * @var \BU\BibliothequeBundle\Entity\Livre
-     */
-    private $livre;
-
-    /**
-     * @var \BU\BibliothequeBundle\Entity\User
-     */
-    private $user;
-
-
-    /**
      * Set livre
      *
      * @param \BU\BibliothequeBundle\Entity\Livre $livre
      *
-     * @return Archivage
+     * @return Reservation
      */
     public function setLivre(\BU\BibliothequeBundle\Entity\Livre $livre = null)
     {
@@ -149,7 +91,7 @@ class Archivage
      *
      * @param \BU\BibliothequeBundle\Entity\User $user
      *
-     * @return Archivage
+     * @return Reservation
      */
     public function setUser(\BU\BibliothequeBundle\Entity\User $user = null)
     {

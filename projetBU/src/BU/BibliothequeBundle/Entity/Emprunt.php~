@@ -113,30 +113,5 @@ class Emprunt
     /**
      * @var \BU\BibliothequeBundle\Entity\Exemplaire
      */
-    private $exemplaireemprunt;
 
-
-    /**
-     * Set exemplaireemprunt
-     *
-     * @param \BU\BibliothequeBundle\Entity\Exemplaire $exemplaireemprunt
-     *
-     * @return Emprunt
-     */
-    public function setExemplaireemprunt(\BU\BibliothequeBundle\Entity\Exemplaire $exemplaireemprunt = null)
-    {
-        $this->exemplaireemprunt = $exemplaireemprunt;
-
-        return $this;
-    }
-
-    /**
-     * Get exemplaireemprunt
-     *
-     * @return \BU\BibliothequeBundle\Entity\Exemplaire
-     */
-    public function getExemplaireemprunt()
-    {
-        return $this->exemplaireemprunt;
-    }
 }

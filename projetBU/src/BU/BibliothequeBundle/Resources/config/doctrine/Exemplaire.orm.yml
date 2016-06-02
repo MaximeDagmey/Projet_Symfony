@@ -26,11 +26,4 @@ BU\BibliothequeBundle\Entity\Exemplaire:
             cascade: [ persist ]
             joinColumn:
               onDelete: cascade
-    oneToMany:
-        livreemprunt:
-           targetEntity: Emprunt
-           mappedBy:  exemplaireemprunt
-        livreempruntarch:
-           targetEntity: Archivage
-           mappedBy:  exemplaireempruntarch
     lifecycleCallbacks: {  }

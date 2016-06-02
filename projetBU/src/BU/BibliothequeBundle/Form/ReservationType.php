@@ -5,9 +5,8 @@ namespace BU\BibliothequeBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-class EmpruntType extends AbstractType
+class ReservationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -29,7 +28,7 @@ class EmpruntType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BU\BibliothequeBundle\Entity\Emprunt'
+            'data_class' => 'BU\BibliothequeBundle\Entity\Reservation'
         ));
     }
 }

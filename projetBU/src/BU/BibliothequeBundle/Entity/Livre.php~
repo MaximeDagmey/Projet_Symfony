@@ -127,45 +127,6 @@ class Livre
         return $this->themes;
     }
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $empruntlivre;
-
-
-    /**
-     * Add empruntlivre
-     *
-     * @param \BU\BibliothequeBundle\Entity\Emprunt $empruntlivre
-     *
-     * @return Livre
-     */
-    public function addEmpruntlivre(\BU\BibliothequeBundle\Entity\Emprunt $empruntlivre)
-    {
-        $this->empruntlivre[] = $empruntlivre;
-
-        return $this;
-    }
-
-    /**
-     * Remove empruntlivre
-     *
-     * @param \BU\BibliothequeBundle\Entity\Emprunt $empruntlivre
-     */
-    public function removeEmpruntlivre(\BU\BibliothequeBundle\Entity\Emprunt $empruntlivre)
-    {
-        $this->empruntlivre->removeElement($empruntlivre);
-    }
-
-    /**
-     * Get empruntlivre
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEmpruntlivre()
-    {
-        return $this->empruntlivre;
-    }
-    /**
      * @var \BU\BibliothequeBundle\Entity\Etagere
      */
     private $etagere;
@@ -314,5 +275,83 @@ class Livre
     public function getExemplaires()
     {
         return $this->exemplaires;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $livrereservation;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $livreempruntarch;
+
+
+    /**
+     * Add livrereservation
+     *
+     * @param \BU\BibliothequeBundle\Entity\Reservation $livrereservation
+     *
+     * @return Livre
+     */
+    public function addLivrereservation(\BU\BibliothequeBundle\Entity\Reservation $livrereservation)
+    {
+        $this->livrereservation[] = $livrereservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove livrereservation
+     *
+     * @param \BU\BibliothequeBundle\Entity\Reservation $livrereservation
+     */
+    public function removeLivrereservation(\BU\BibliothequeBundle\Entity\Reservation $livrereservation)
+    {
+        $this->livrereservation->removeElement($livrereservation);
+    }
+
+    /**
+     * Get livrereservation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLivrereservation()
+    {
+        return $this->livrereservation;
+    }
+
+    /**
+     * Add livreempruntarch
+     *
+     * @param \BU\BibliothequeBundle\Entity\Archivage $livreempruntarch
+     *
+     * @return Livre
+     */
+    public function addLivreempruntarch(\BU\BibliothequeBundle\Entity\Archivage $livreempruntarch)
+    {
+        $this->livreempruntarch[] = $livreempruntarch;
+
+        return $this;
+    }
+
+    /**
+     * Remove livreempruntarch
+     *
+     * @param \BU\BibliothequeBundle\Entity\Archivage $livreempruntarch
+     */
+    public function removeLivreempruntarch(\BU\BibliothequeBundle\Entity\Archivage $livreempruntarch)
+    {
+        $this->livreempruntarch->removeElement($livreempruntarch);
+    }
+
+    /**
+     * Get livreempruntarch
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLivreempruntarch()
+    {
+        return $this->livreempruntarch;
     }
 }

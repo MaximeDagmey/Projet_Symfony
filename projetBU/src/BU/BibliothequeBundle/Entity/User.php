@@ -144,19 +144,6 @@ class User
     private $faculte;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $emprunts;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->emprunts = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Set faculte
      *
      * @param \BU\BibliothequeBundle\Entity\Faculte $faculte
@@ -180,42 +167,6 @@ class User
         return $this->faculte;
     }
 
-    /**
-     * Add emprunt
-     *
-     * @param \BU\BibliothequeBundle\Entity\Livre $emprunt
-     *
-     * @return User
-     */
-    public function addEmprunt(\BU\BibliothequeBundle\Entity\Livre $emprunt)
-    {
-        $this->emprunts[] = $emprunt;
-
-        return $this;
-    }
-
-    /**
-     * Remove emprunt
-     *
-     * @param \BU\BibliothequeBundle\Entity\Livre $emprunt
-     */
-    public function removeEmprunt(\BU\BibliothequeBundle\Entity\Livre $emprunt)
-    {
-        $this->emprunts->removeElement($emprunt);
-    }
-
-    /**
-     * Get emprunts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEmprunts()
-    {
-        return $this->emprunts;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $empruntuser;
 
 
@@ -325,4 +276,53 @@ class User
     {
         return $this->empruntuserarch;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $userreservation;
+
+
+    /**
+     * Add userreservation
+     *
+     * @param \BU\BibliothequeBundle\Entity\Rerservation $userreservation
+     *
+     * @return User
+     */
+    public function addUserreservation(\BU\BibliothequeBundle\Entity\Rerservation $userreservation)
+    {
+        $this->userreservation[] = $userreservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove userreservation
+     *
+     * @param \BU\BibliothequeBundle\Entity\Rerservation $userreservation
+     */
+    public function removeUserreservation(\BU\BibliothequeBundle\Entity\Rerservation $userreservation)
+    {
+        $this->userreservation->removeElement($userreservation);
+    }
+
+    /**
+     * Get userreservation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserreservation()
+    {
+        return $this->userreservation;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->empruntuser = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->empruntuserarch = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userreservation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }

@@ -1,6 +1,6 @@
-BU\BibliothequeBundle\Entity\Archivage:
+BU\BibliothequeBundle\Entity\Reservation:
     type: entity
-    repositoryClass: BU\BibliothequeBundle\Repository\ArchivageRepository
+    repositoryClass: BU\BibliothequeBundle\Repository\ReservationRepository
     id:
         id:
             type: integer
@@ -10,13 +10,13 @@ BU\BibliothequeBundle\Entity\Archivage:
     manyToOne:
         livre:
             targetEntity: Livre
-            inversedBy: livreempruntarch
+            inversedBy: livrereservation
             cascade: [ persist ]
             joinColumn:
                onDelete: cascade
         user:
             targetEntity: User
-            inversedBy: empruntuserarch
+            inversedBy: userreservation
             cascade: [ persist ]
             joinColumn:
                 onDelete: cascade

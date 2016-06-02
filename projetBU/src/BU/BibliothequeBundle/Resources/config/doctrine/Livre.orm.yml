@@ -26,4 +26,13 @@ BU\BibliothequeBundle\Entity\Livre:
         exemplaires:
             targetEntity: Exemplaire
             mappedBy: livreexemplaire
+        livrereservation:
+            targetEntity: Reservation
+            mappedBy: livre
+        livreemprunt:
+            targetEntity: Emprunt
+            mappedBy:  livre
+        livreempruntarch:
+            targetEntity: Archivage
+            mappedBy:  livre
     lifecycleCallbacks: {  }

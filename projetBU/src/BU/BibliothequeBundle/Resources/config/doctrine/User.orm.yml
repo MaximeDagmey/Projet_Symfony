@@ -39,5 +39,8 @@ BU\BibliothequeBundle\Entity\User:
             mappedBy: user
         empruntuserarch:
             targetEntity: Archivage
-            mappedBy: userarch
+            mappedBy: user
+        userreservation:
+            targetEntity: Reservation
+            mappedBy: user
     lifecycleCallbacks: {  }
