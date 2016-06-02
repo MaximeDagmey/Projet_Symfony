@@ -66,6 +66,17 @@ class EmpruntController extends Controller
             $em = $this->getDoctrine()->getManager();
             $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
             $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
+            if($emprunt->getUser()->getCycle() == 1){
+              $useremp = $em->getRepository('BUBibliothequeBundle:Emprunt')->findEmpuser($emprunt->getUser());
+              if($useremp >= 5){
+                   $message = "L'utilisateur ne peut plus faire d'emprunt";
+                 return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
+                     'emprunt' => $emprunt,
+                     'form' => $form->createView(),
+                     'message' => $message,
+                 ));
+              }
+            }
             if( $reservation >= $exemplaires ){
                 $message = "Le livre n'est disponible";
                  return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
@@ -74,13 +85,12 @@ class EmpruntController extends Controller
                      'message' => $message,
                  ));
             }
-            else {
+            else 
                
             $em->persist($emprunt);
             $em->flush();
 
             return $this->redirectToRoute('emprunt_show', array('id' => $emprunt->getId()));
-            }
         }
 
         return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(

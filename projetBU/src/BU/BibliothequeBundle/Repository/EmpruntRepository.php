@@ -24,6 +24,12 @@ class EmpruntRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('prenom', $Prenom);
         return $query->getResult();
 	}
+    public function findEmpuser($id){
+		$query = $this->getEntityManager()->createQuery("SELECT COUNT(s) FROM BUBibliothequeBundle:Emprunt s
+                                                        WHERE s.user = :id ");
+		$query->setParameter('id', $id);
+         return $query->getSingleScalarResult();
+	}
     
     public function findEmphorsdelai(){
         $date = new \Datetime('now -15day');
