@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste des emprunts</h1>
+    <h1>{{ titre }}</h1>
 
     <table>
         <thead>
@@ -39,7 +39,6 @@
         {% endfor %}
         </tbody>
     </table>
-
     <ul>
         <li>
             <a href="{{ path('emprunt_new') }}">Créer un nouvel emprunt</a>
@@ -55,6 +54,9 @@
         </li>
          <li>
             <a href="{{ path('archivage_index') }}">Liste des emprunts archivés</a>
+        </li>
+         <li>
+            <a href="{{ path('emprunt_horsdelai') }}">Liste des emprunts hors délai</a>
         </li>
     </ul>
 {% endblock %}

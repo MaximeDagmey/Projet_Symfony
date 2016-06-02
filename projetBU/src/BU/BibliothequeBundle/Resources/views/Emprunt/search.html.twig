@@ -27,12 +27,15 @@
                 <td>{{ emprunt.user }}</td>
                 <td>{{ emprunt.livre}}</td>
                 <td>
-                    <ul>
+                 <ul>
                         <li>
                             <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">Voir</a>
                         </li>
                         <li>
                             <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">Éditer</a>
+                        </li>
+                         <li>
+                            <a href="{{ path('emprunt_retour', { 'id': emprunt.id }) }}">Retourner le livre</a>
                         </li>
                     </ul>
                 </td>
@@ -40,10 +43,21 @@
         {% endfor %}
         </tbody>
     </table>
-    
-    <ul>
+   <ul>
         <li>
-            <a href="{{ path('emprunt_index') }}">Retouner à la liste</a>
+            <a href="{{ path('emprunt_new') }}">Créer un nouvel emprunt</a>
+        </li>
+        <li>
+            <a href="{{ path('emprunt_livredispo') }}">Consulter la disponibilité d'un livre</a>
+        </li>
+        <li>
+            <a href="{{ path('emprunt_livre') }}">Liste des emprunts par livre</a>
+        </li>
+        <li>
+            <a href="{{ path('emprunt_user') }}">Liste des emprunts par utilisateur</a>
+        </li>
+         <li>
+            <a href="{{ path('archivage_index') }}">Liste des emprunts archivés</a>
         </li>
     </ul>
 {% endblock %}

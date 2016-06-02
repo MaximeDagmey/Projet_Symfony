@@ -3,6 +3,11 @@ emprunt_index:
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:index" }
     methods:  GET
 
+emprunt_horsdelai:
+    path:     /horsdelai
+    defaults: { _controller: "BUBibliothequeBundle:Emprunt:horsdelai" }
+    methods:  GET
+
 emprunt_show:
     path:     /{id}/show
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:show" }

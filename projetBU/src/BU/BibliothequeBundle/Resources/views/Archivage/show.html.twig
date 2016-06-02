@@ -13,6 +13,15 @@
                 <th>Date</th>
                 <td>{% if archivage.date %}{{ archivage.date|date('Y-m-d') }}{% endif %}</td>
             </tr>
+             </tr>
+             <tr>
+                <th>Livre</th>
+                <td>{{ archivage.livre }}</td>
+            </tr>
+            <tr>
+                <th>Utilisateur</th>
+                <td>{{ archivage.user}}</td>
+            </tr>
         </tbody>
     </table>
 

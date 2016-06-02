@@ -26,13 +26,29 @@ class EmpruntController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+         $titre = "Liste des emprunts";
 
         $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findAll();
 
         return $this->render('BUBibliothequeBundle:Emprunt:index.html.twig', array(
-            'emprunts' => $emprunts,
+             'emprunts' => $emprunts,
+             'titre' => $titre,
         ));
     }
+    
+      public function horsdelaiAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $titre = "Liste des emprunts hors délai";
+
+        $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findEmpHorsdelai();
+
+        return $this->render('BUBibliothequeBundle:Emprunt:index.html.twig', array(
+            'emprunts' => $emprunts,
+            'titre' => $titre,
+        ));
+    }
+
 
     /**
      * Creates a new Emprunt entity.
@@ -43,18 +59,33 @@ class EmpruntController extends Controller
         $emprunt = new Emprunt();
         $form = $this->createForm(EmpruntType::class, $emprunt);
         $form->handleRequest($request);
+        $message = null;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($emprunt->getLivre()->getTitre());
+            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($emprunt->getLivre()->getTitre());
+            if( $reservation >= $exemplaires ){
+                $message = "Le livre n'est disponible";
+                 return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
+                     'emprunt' => $emprunt,
+                     'form' => $form->createView(),
+                     'message' => $message,
+                 ));
+            }
+            else {
+               
             $em->persist($emprunt);
             $em->flush();
 
             return $this->redirectToRoute('emprunt_show', array('id' => $emprunt->getId()));
+            }
         }
 
         return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
             'emprunt' => $emprunt,
             'form' => $form->createView(),
+            'message' => $message,
         ));
     }
     
@@ -70,7 +101,7 @@ class EmpruntController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findReservationLivre($livre->getTitre());
+            $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findEmpruntLivre($livre->getTitre());
 
               return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array('emprunts' => $emprunts,'form' => $form->createView(), 'titre' => $titre,));
         }
@@ -92,7 +123,7 @@ class EmpruntController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($livre->getTitre());
-            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findExemplaireLivre($livre->getTitre());
+            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($livre->getTitre());
             if($reservation >= $exemplaires ){
                 $message = "Aucun exemplaire n'est disponible";
             }
@@ -124,7 +155,7 @@ class EmpruntController extends Controller
         
         if ($form->isSubmitted() && $form->isValid()) {
              $em = $this->getDoctrine()->getManager();
-             $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findReservationUser($user->getNom(),$user->getPrenom());
+             $emprunts = $em->getRepository('BUBibliothequeBundle:Emprunt')->findEmpruntUser($user->getNom(),$user->getPrenom());
 
               return $this->render('BUBibliothequeBundle:Emprunt:search.html.twig', array('emprunts' => $emprunts,'form' => $form->createView(), 'titre' => $titre,));
         }
