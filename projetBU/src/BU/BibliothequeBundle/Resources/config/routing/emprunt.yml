@@ -46,4 +46,5 @@ emprunt_delete:
 emprunt_retour:
     path:    /retour/{id}
     defaults: { _controller: "BUBibliothequeBundle:Emprunt:retour"}
+    methods:  [GET, POST]
 
