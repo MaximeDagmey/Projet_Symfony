@@ -15,7 +15,7 @@ class ArchivageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', 'date')
+            ->add('date', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType')
             ->add('exemplaireempruntarch')
             ->add('userarch')
         ;

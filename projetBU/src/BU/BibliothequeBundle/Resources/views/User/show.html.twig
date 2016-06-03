@@ -48,7 +48,7 @@
             <tr>
                 <td><a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">{{ emprunt.id }}</a></td>
                 <td>{% if emprunt.date %}{{ emprunt.date|date('d-m-Y') }}{% endif %}</td>
-                <td>{{ emprunt.exemplaireemprunt}}</td>
+                <td>{{ emprunt.livre}}</td>
                 <td>
                     <ul>
                         <li>

@@ -17,3 +17,8 @@ archivage_delete:
     path:     /{id}/delete
     defaults: { _controller: "BUBibliothequeBundle:Archivage:delete" }
     methods:  DELETE
+    
+archivage_new:
+    path:     /new
+    defaults: { _controller: "BUBibliothequeBundle:Archivage:new" }
+    methods:  [GET, POST]

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Reservation</h1>
+    <h1>Réservation</h1>
 
     <table>
         <tbody>
@@ -11,21 +11,30 @@
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{% if reservation.date %}{{ reservation.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if reservation.date %}{{ reservation.date|date('d-m-Y') }}{% endif %}</td>
             </tr>
+            <tr>
+                <th>livre</th>
+                <td>{{ reservation.livre }}</td>
+            </tr>
+            <tr>
+                <th>Utilisateur</th>
+                <td>{{ reservation.user }}</td>
+            </tr>
+
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('reservation_index') }}">Back to the list</a>
+            <a href="{{ path('reservation_index') }}">Retourner à la liste des réservations</a>
         </li>
         <li>
-            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Edit</a>
+            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Éditer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

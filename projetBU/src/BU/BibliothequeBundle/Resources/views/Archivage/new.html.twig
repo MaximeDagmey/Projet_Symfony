@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Création d'une réservation</h1>
+    <h1>Création d'un archivage</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('reservation_index') }}">Retourner à la liste des réservations</a>
+            <a href="{{ path('archivage_index') }}">Retourner à la liste des archivages</a>
         </li>
     </ul>
 {% endblock %}

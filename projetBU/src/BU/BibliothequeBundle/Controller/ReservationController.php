@@ -37,6 +37,8 @@ class ReservationController extends Controller
     {
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
+        $date = new \Datetime('now');
+        $form->get('date')->setData($date);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

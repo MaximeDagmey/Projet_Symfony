@@ -10,11 +10,13 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class LivreRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findLivreByAuteur($nom)
+    
+    
+    public function findLivreByAuteur($auteur)
     {
-		$query = $this->getEntityManager()->createQuery("select l.* from BUBibliothequeBundle:Livre l, BUBibliothequeBundle:auteur_livre al, BUBibliothequeBundle:Auteur a
-                                                         where l.id = al.livre_id
-                                                         and al.auteur_id = a.id
+		$query = $this->getEntityManager()->createQuery("select l.* from BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Auteur a
+                                                         where l.id = 
+                                                         and  = a.id
                                                          and a.nom = :nom");
 
 		$query->setParameter('nom', $nom);
