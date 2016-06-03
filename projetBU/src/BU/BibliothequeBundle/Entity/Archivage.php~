@@ -18,17 +18,6 @@ class Archivage
     private $date;
 
     /**
-     * @var \BU\BibliothequeBundle\Entity\Exemplaire
-     */
-    private $exemplaireempruntarch;
-
-    /**
-     * @var \BU\BibliothequeBundle\Entity\User
-     */
-    private $userarch;
-
-
-    /**
      * Get id
      *
      * @return integer
@@ -61,57 +50,6 @@ class Archivage
     {
         return $this->date;
     }
-
-    /**
-     * Set exemplaireempruntarch
-     *
-     * @param \BU\BibliothequeBundle\Entity\Exemplaire $exemplaireempruntarch
-     *
-     * @return Archivage
-     */
-    public function setExemplaireempruntarch(\BU\BibliothequeBundle\Entity\Exemplaire $exemplaireempruntarch = null)
-    {
-        $this->exemplaireempruntarch = $exemplaireempruntarch;
-
-        return $this;
-    }
-
-    /**
-     * Get exemplaireempruntarch
-     *
-     * @return \BU\BibliothequeBundle\Entity\Exemplaire
-     */
-    public function getExemplaireempruntarch()
-    {
-        return $this->exemplaireempruntarch;
-    }
-
-    /**
-     * Set userarch
-     *
-     * @param \BU\BibliothequeBundle\Entity\User $userarch
-     *
-     * @return Archivage
-     */
-    public function setUserarch(\BU\BibliothequeBundle\Entity\User $userarch = null)
-    {
-        $this->userarch = $userarch;
-
-        return $this;
-    }
-
-    /**
-     * Get userarch
-     *
-     * @return \BU\BibliothequeBundle\Entity\User
-     */
-    public function getUserarch()
-    {
-        return $this->userarch;
-    }
-    /**
-     * @var \BU\BibliothequeBundle\Entity\Livre
-     */
     private $livre;
 
     /**
@@ -127,7 +65,7 @@ class Archivage
      *
      * @return Archivage
      */
-    public function setLivre(\BU\BibliothequeBundle\Entity\Livre $livre = null)
+    public function setLivre(\BU\BibliothequeBundle\Entity\Exemplaire $livre = null)
     {
         $this->livre = $livre;
 
@@ -166,5 +104,34 @@ class Archivage
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $dateretour;
+
+
+    /**
+     * Set dateretour
+     *
+     * @param \DateTime $dateretour
+     *
+     * @return Archivage
+     */
+    public function setDateretour($dateretour)
+    {
+        $this->dateretour = $dateretour;
+
+        return $this;
+    }
+
+    /**
+     * Get dateretour
+     *
+     * @return \DateTime
+     */
+    public function getDateretour()
+    {
+        return $this->dateretour;
     }
 }

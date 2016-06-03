@@ -2,7 +2,17 @@
 
 {% block body %}
     <h1>Liste des livres</h1>
-
+    <ul>
+        <li>
+            <a href="{{ path('user_Find_By_Auteur') }}">Rechercher livre par auteur</a>
+        </li>
+        <li>
+            <a href="{{ path('user_Find_By_Titre_Approximatif') }}">Recherche livre par titre</a>
+        </li>
+         <li>
+            <a href="{{ path('livre_Find_By_Theme') }}">Recherche livre par theme</a>
+        </li>
+    </ul>
     <table>
         <thead>
             <tr>

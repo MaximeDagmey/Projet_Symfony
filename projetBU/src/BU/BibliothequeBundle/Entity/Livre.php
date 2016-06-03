@@ -155,45 +155,7 @@ class Livre
     {
         return $this->etagere;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $livreemprunt;
-
-
-    /**
-     * Add livreemprunt
-     *
-     * @param \BU\BibliothequeBundle\Entity\Emprunt $livreemprunt
-     *
-     * @return Livre
-     */
-    public function addLivreemprunt(\BU\BibliothequeBundle\Entity\Emprunt $livreemprunt)
-    {
-        $this->livreemprunt[] = $livreemprunt;
-
-        return $this;
-    }
-
-    /**
-     * Remove livreemprunt
-     *
-     * @param \BU\BibliothequeBundle\Entity\Emprunt $livreemprunt
-     */
-    public function removeLivreemprunt(\BU\BibliothequeBundle\Entity\Emprunt $livreemprunt)
-    {
-        $this->livreemprunt->removeElement($livreemprunt);
-    }
-
-    /**
-     * Get livreemprunt
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLivreemprunt()
-    {
-        return $this->livreemprunt;
-    }
+   
     
     public function __toString(){
         return $this->getTitre();
@@ -282,12 +244,6 @@ class Livre
     private $livrereservation;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $livreempruntarch;
-
-
-    /**
      * Add livrereservation
      *
      * @param \BU\BibliothequeBundle\Entity\Reservation $livrereservation
@@ -322,36 +278,37 @@ class Livre
     }
 
     /**
-     * Add livreempruntarch
+     * Add livreemprunt
      *
-     * @param \BU\BibliothequeBundle\Entity\Archivage $livreempruntarch
+     * @param \BU\BibliothequeBundle\Entity\Emprunt $livreemprunt
      *
      * @return Livre
      */
-    public function addLivreempruntarch(\BU\BibliothequeBundle\Entity\Archivage $livreempruntarch)
+    public function addLivreemprunt(\BU\BibliothequeBundle\Entity\Emprunt $livreemprunt)
     {
-        $this->livreempruntarch[] = $livreempruntarch;
+        $this->livreemprunt[] = $livreemprunt;
 
         return $this;
     }
 
     /**
-     * Remove livreempruntarch
+     * Remove livreemprunt
      *
-     * @param \BU\BibliothequeBundle\Entity\Archivage $livreempruntarch
+     * @param \BU\BibliothequeBundle\Entity\Emprunt $livreemprunt
      */
-    public function removeLivreempruntarch(\BU\BibliothequeBundle\Entity\Archivage $livreempruntarch)
+    public function removeLivreemprunt(\BU\BibliothequeBundle\Entity\Emprunt $livreemprunt)
     {
-        $this->livreempruntarch->removeElement($livreempruntarch);
+        $this->livreemprunt->removeElement($livreemprunt);
     }
 
     /**
-     * Get livreempruntarch
+     * Get livreemprunt
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLivreempruntarch()
+    public function getLivreemprunt()
     {
-        return $this->livreempruntarch;
+        return $this->livreemprunt;
     }
+
 }

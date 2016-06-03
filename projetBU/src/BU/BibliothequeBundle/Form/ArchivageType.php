@@ -5,6 +5,7 @@ namespace BU\BibliothequeBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ArchivageType extends AbstractType
 {
@@ -15,10 +16,10 @@ class ArchivageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType')
-            ->add('exemplaireempruntarch')
-            ->add('userarch')
-        ;
+            ->add('date', DateType::class, array('input'  => 'datetime','widget' => 'choice'))
+            ->add('livre')
+            ->add('user')
+            ->add('dateretour',DateType::class, array('input'  => 'datetime','widget' => 'choice'));
     }
     
     /**

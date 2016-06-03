@@ -32,3 +32,8 @@ user_Find_By_Titre_Approximatif:
     path:     /SearchByTitreAppro  
     defaults: { _controller: "BUBibliothequeBundle:Livre:GetLivresByTitreApproximatif" }
     methods:  [GET, POST]
+
+livre_Find_By_Theme:
+    path:    /SearchByTheme
+    defaults : { _controller: "BUBibliothequeBundle:Livre:GetLivresByTheme" }
+    methods:  [GET, POST]

@@ -27,12 +27,6 @@ BU\BibliothequeBundle\Entity\User:
            cascade: [ persist ]
            joinColumn:
               onDelete: cascade
-        role:
-           targetEntity: Role
-           inversedBy: users
-           cascade: [ persist ]
-           joinColumn:
-              onDelete: cascade
     oneToMany:
         empruntuser:
             targetEntity: Emprunt
@@ -43,4 +37,8 @@ BU\BibliothequeBundle\Entity\User:
         userreservation:
             targetEntity: Reservation
             mappedBy: user
+    manyToMany:
+        roles:
+            targetEntity: Role
+            inversedBy: users
     lifecycleCallbacks: {  }

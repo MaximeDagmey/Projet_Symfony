@@ -9,6 +9,7 @@ use BU\BibliothequeBundle\Entity\Emprunt;
 use BU\BibliothequeBundle\Form\EmpruntType;
 use BU\BibliothequeBundle\Form\LivreType;
 use BU\BibliothequeBundle\Form\UserType;
+use BU\BibliothequeBundle\Form\ArchivageType;
 use BU\BibliothequeBundle\Entity\Livre;
 use BU\BibliothequeBundle\Entity\User;
 use BU\BibliothequeBundle\Entity\Archivage;
@@ -63,8 +64,19 @@ class EmpruntController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($emprunt->getLivre()->getTitre());
-            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($emprunt->getLivre()->getTitre());
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
+            $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
+            if($emprunt->getUser()->getCycle() == 1){
+              $useremp = $em->getRepository('BUBibliothequeBundle:Emprunt')->findEmpuser($emprunt->getUser());
+              if($useremp >= 5){
+                   $message = "L'utilisateur ne peut plus faire d'emprunt";
+                 return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
+                     'emprunt' => $emprunt,
+                     'form' => $form->createView(),
+                     'message' => $message,
+                 ));
+              }
+            }
             if( $reservation >= $exemplaires ){
                 $message = "Le livre n'est disponible";
                  return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
@@ -73,13 +85,12 @@ class EmpruntController extends Controller
                      'message' => $message,
                  ));
             }
-            else {
+            else 
                
             $em->persist($emprunt);
             $em->flush();
 
             return $this->redirectToRoute('emprunt_show', array('id' => $emprunt->getId()));
-            }
         }
 
         return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
@@ -148,7 +159,7 @@ class EmpruntController extends Controller
         $form = $this->createForm(UserType::class, $user);
         $form->remove('cycle');
         $form->remove('password');
-         $form->remove('faculte');
+        $form->remove('faculte');
         $form->handleRequest($request);
         $emprunts = null;
         $titre = "Recherche d'emprunts par utilisateur";
@@ -202,18 +213,32 @@ class EmpruntController extends Controller
         ));
     }
     
-     public function retourAction($id)
+     public function retourAction(Request $request,$id)
     {
-       $em = $this->getDoctrine()->getManager();
-       $emprunt = $em->getRepository('BUBibliothequeBundle:Emprunt')->find($id);
        $archivage = new Archivage;
-       $archivage->setDate($emprunt->getDate());
-       $archivage->setLivre($emprunt->getLivre());
-       $archivage->setUser($emprunt->getUser());
-       $em->persist($archivage);
-       $em->remove($emprunt);
-       $em->flush();
-        return $this->redirectToRoute('emprunt_index');
+       $message = 'Début';
+       $form = $this->createForm(ArchivageType::class, $archivage);
+       $form->remove('date');
+       $form->remove('livre');
+       $form->remove('user');
+       $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message = 'ajout';
+            $em = $this->getDoctrine()->getManager();
+            $emprunt = $em->getRepository('BUBibliothequeBundle:Emprunt')->find($id);
+            $archivage->setDate($emprunt->getDate());
+            $archivage->setLivre($emprunt->getLivre());
+            $archivage->setUser($emprunt->getUser());
+            $em->persist($archivage);
+            $em->remove($emprunt);
+            $em->flush();
+            return $this->redirectToRoute('emprunt_index');     
+        }
+      
+        return $this->render('BUBibliothequeBundle:Emprunt:retour.html.twig', array(
+            'form' => $form->createView(),
+            'message' => $message,
+        ));     
     }
 
     /**

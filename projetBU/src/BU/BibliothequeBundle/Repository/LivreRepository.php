@@ -10,6 +10,7 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class LivreRepository extends \Doctrine\ORM\EntityRepository
 {
+<<<<<<< HEAD
     
     
     public function findLivreByAuteur($auteur)
@@ -22,6 +23,8 @@ class LivreRepository extends \Doctrine\ORM\EntityRepository
 		$query->setParameter('nom', $nom);
         return $query->getResult();
 	}
+=======
+>>>>>>> 47aeee37c0d899f4fefbc6fe982d8db5388df6e6
     
     public function findLivreByTitreApproximatif($sousChaine)
     {
@@ -29,4 +32,15 @@ class LivreRepository extends \Doctrine\ORM\EntityRepository
 		$queryBuider->where('s.titre LIKE :sousChaine')->setParameter('sousChaine', '%'.$sousChaine.'%');
 		return $queryBuider->getQuery()->getResult();
 	}
+    
+    public function findLivreByTheme($ListeTheme)
+    {
+        $query = $this->getEntityManager()->createQuery("select l from BUBibliothequeBundle:Livre l, BUBibliothequeBundle:theme t, BUBibliothequeBundle:livre_theme lt
+                                                         where lt.theme_id = t.id
+                                                         and lt.livre_id = l.id
+                                                         and t.id = (:ListeTheme) ");
+        
+        $query->setParameter('ListeTheme', array($ListeTheme));
+        return $query->getResult();
+    }
 }

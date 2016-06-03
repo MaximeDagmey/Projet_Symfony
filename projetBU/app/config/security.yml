@@ -4,16 +4,43 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        mes_utilisateurs:
+            entity:
+                class: BUBibliothequeBundle:User
+                property: nom
+                
+    encoders:
+        BU\BibliothequeBundle\Entity\User: plaintext
+     
+    role_hierarchy:
+        ROLE_DIRECTEUR: [ROLE_CONSERVATEUR, ROLE_LECTEUR, ROLE_PRET, ROLE_MAGASINIER, ROLE_INSCRIPTION, ROLE_ALLOWED_TO_SWICTH]
+        
+    access_control:
+        - { path: ^/(livre|auteur|theme)/$, roles: ROLE_CONSERVATEUR}
+        - { path: ^/(emprunt|archivage)/$, roles: ROLE_PRET}
+        - { path: ^/(faculte|user)/$, roles: ROLE_INSCRIT}
+        - { path: ^/(livre)/Search$, roles: ROLE_LECTEUR}
+        - { path: ^/(reservation)/new$, roles: ROLE_LECTEUR}
+        - { path: ^/(rayon|etagere|exemplaire)/$, roles: ROLE_MAGASINIER}
+        
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        
+        gestionBibliotheque:
+            pattern: ^/(emprunt|livre|auteur|reservation|archivage|rayon|etagere|theme|faculte|exemplaire|login_check|logout)
+            form_login:
+                login_path: /login
+                check_path: /login_check
+            logout:
+                path: /logout
+                target: /
 
-        main:
+        homepage:
+            pattern: ^/
             anonymous: ~
             # activate different ways to authenticate
 

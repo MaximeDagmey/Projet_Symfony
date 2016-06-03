@@ -132,7 +132,6 @@ class LivreController extends Controller
     {   
         $auteur = new Auteur();
         $form = $this->createForm(AuteurType::class, $auteur);
-        $form->remove('prenom');
         $form->remove('livreauteur');
         $form->handleRequest($request);
         $livres = null;
@@ -142,7 +141,8 @@ class LivreController extends Controller
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $em = $this->getDoctrine()->getManager();
-            $livres = $em->getRepository('BUBibliothequeBundle:Livre')->findLivreByAuteur($auteur->getNom());
+            $auteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom(),$auteur->getPrenom());
+            $livres = $auteur->getLivreauteur();
             if(empty($livres))
             {
                 $message = "Aucun livre connu pour cet auteur";
@@ -185,6 +185,45 @@ class LivreController extends Controller
             if(empty($livres))
             {
                 $message = "Aucun livre connu pour ce titre";
+            }
+            else
+            {
+                $nblivres = count($livres);
+                if ($nblivres > 1) 
+                {
+                    $message = strval($nblivres)." résultats trouvés :";
+                }
+                else 
+                {
+                    $message = strval($nblivres)." seul résultat trouvé :";
+                }
+
+            }
+
+            return $this->render('BUBibliothequeBundle:Livre:search.html.twig', array('livres' => $livres,'form' => $form->createView(),'message' => $message, 'titre' => $titre,));
+        }
+
+        return $this->render('BUBibliothequeBundle:Livre:search.html.twig', array('livres' => $livres,'form' => $form->createView(),'message' => $message, 'titre' => $titre,));
+    }
+    
+    public function GetLivresByThemeAction(Request $request)
+    {
+        $livre = new Livre();
+        $form = $this->createForm(LivreType::class, $livre);
+        $form->remove('notice');
+        $form->remove('titre');
+        $form->handleRequest($request);
+        $livres = null;
+        $message = null;
+        $titre = "Recherche de livre par theme";
+        
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $em = $this->getDoctrine()->getManager();
+            $livres = $em->getRepository('BUBibliothequeBundle:Livre')->findLivreByTheme($livre->getThemes());
+            if(empty($livres))
+            {
+                $message = "Aucun livre connu pour ce theme";
             }
             else
             {

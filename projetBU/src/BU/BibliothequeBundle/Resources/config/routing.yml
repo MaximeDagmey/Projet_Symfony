@@ -45,3 +45,13 @@ bu_bibliotheque_reservation:
 bu_bibliotheque_homepage:
     path:     /
     defaults: { _controller: BUBibliothequeBundle:Default:index }
+ 
+login:
+    path: /login
+    defaults: { _controller: BUBibliothequeBundle:Security:login }
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout

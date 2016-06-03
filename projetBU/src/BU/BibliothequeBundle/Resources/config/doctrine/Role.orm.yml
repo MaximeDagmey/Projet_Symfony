@@ -12,9 +12,8 @@ BU\BibliothequeBundle\Entity\Role:
         role:
             type: string
             length: '25'
-    oneToMany:
+    manyToMany:
         users:
             targetEntity: User
-            mappedBy: role
-            cascade : [ persist ]
+            mappedBy: roles
     lifecycleCallbacks: {  }
