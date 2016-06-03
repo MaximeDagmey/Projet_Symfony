@@ -1,7 +1,7 @@
 <?php
 
 namespace BU\BibliothequeBundle\Repository;
-
+use Doctrine\ORM\Query;
 /**
  * AuteurRepository
  *
@@ -10,4 +10,11 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class AuteurRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAuteur($nom, $prenom){
+        $query = $this->getEntityManager()->createQuery("SELECT a FROM BUBibliothequeBundle:Auteur a 
+                                                        WHERE a.nom = :nom AND a.prenom = :prenom ");
+		$query->setParameter('nom', $nom);
+        $query->setParameter('prenom', $prenom);
+        return $query->getSingleResult();
+    }
 }

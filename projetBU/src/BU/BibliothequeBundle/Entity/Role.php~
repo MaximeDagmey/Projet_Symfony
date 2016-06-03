@@ -1,11 +1,12 @@
 <?php
 
 namespace BU\BibliothequeBundle\Entity;
+use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
  * Role
  */
-class Role
+class Role implements RoleInterface
 {
     /**
      * @var int

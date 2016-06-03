@@ -1,11 +1,11 @@
 <?php
 
 namespace BU\BibliothequeBundle\Entity;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * User
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -89,6 +89,12 @@ class User
     {
         return $this->prenom;
     }
+    
+     public function getUsername()
+    {
+        return $this->nom;
+    }
+
 
     /**
      * Set password
@@ -203,36 +209,7 @@ class User
     {
         return $this->empruntuser;
     }
-    /**
-     * @var \BU\BibliothequeBundle\Entity\Role
-     */
-    private $role;
-
-
-    /**
-     * Set role
-     *
-     * @param \BU\BibliothequeBundle\Entity\Role $role
-     *
-     * @return User
-     */
-    public function setRole(\BU\BibliothequeBundle\Entity\Role $role = null)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return \BU\BibliothequeBundle\Entity\Role
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-    
+      
     public function __toString()
     {
         return $this->getNom()." ". $this->getPrenom();
@@ -323,6 +300,54 @@ class User
         $this->empruntuser = new \Doctrine\Common\Collections\ArrayCollection();
         $this->empruntuserarch = new \Doctrine\Common\Collections\ArrayCollection();
         $this->userreservation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();;
+    }
+    
+ public function getSalt(){ 
+        return '';  // sel vide
+    }
+    
+     public function getRoles() { 
+       return $this->role->toArray(); 
+    } 
+    
+    public function eraseCredentials() { } 
+    
+    public function serialize() { 
+        return serialize(array( $this->id, $this->nom, $this->password)); 
+    }
+    
+     public function unserialize($serialized) { 
+        list( $this->id, $this->nom, $this->password) = unserialize($serialized); 
+    } 
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $roles;
+
+
+    /**
+     * Add role
+     *
+     * @param \BU\BibliothequeBundle\Entity\Role $role
+     *
+     * @return User
+     */
+    public function addRole(\BU\BibliothequeBundle\Entity\Role $role)
+    {
+        $this->roles[] = $role;
+
+        return $this;
     }
 
+    /**
+     * Remove role
+     *
+     * @param \BU\BibliothequeBundle\Entity\Role $role
+     */
+    public function removeRole(\BU\BibliothequeBundle\Entity\Role $role)
+    {
+        $this->roles->removeElement($role);
+    }
 }

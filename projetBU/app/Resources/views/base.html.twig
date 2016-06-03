@@ -29,12 +29,22 @@
                 background-color: #0047b3;
                 color: white;
             }
+            
+            .button{
+            padding: 5px 5px;
+            text-align: center;
+            display: inline-block;
+            font-size: 14px;
+            }
 
         </style>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    {% if app.user %}       
+        <a href={{ path('logout') }}><button type="button" class="button">Déconnexion</button></a>
+     {% endif %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

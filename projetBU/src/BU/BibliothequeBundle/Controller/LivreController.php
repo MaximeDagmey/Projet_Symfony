@@ -132,7 +132,6 @@ class LivreController extends Controller
     {   
         $auteur = new Auteur();
         $form = $this->createForm(AuteurType::class, $auteur);
-        $form->remove('prenom');
         $form->remove('livreauteur');
         $form->handleRequest($request);
         $livres = null;
@@ -142,7 +141,8 @@ class LivreController extends Controller
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $em = $this->getDoctrine()->getManager();
-            $livres = $em->getRepository('BUBibliothequeBundle:Livre')->findLivreByAuteur($auteur->getNom());
+            $auteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom(),$auteur->getPrenom());
+            $livres = $auteur->getLivreauteur();
             if(empty($livres))
             {
                 $message = "Aucun livre connu pour cet auteur";
