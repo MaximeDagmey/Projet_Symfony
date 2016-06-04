@@ -31,7 +31,7 @@ security:
             security: false
         
         gestionBibliotheque:
-            pattern: ^/(emprunt|livre|auteur|reservation|archivage|rayon|etagere|theme|faculte|exemplaire|login_check|logout)
+            pattern: ^/(emprunt|livre|auteur|reservation|archivage|rayon|etagere|theme|faculte|user|exemplaire|login_check|logout)
             form_login:
                 login_path: /login
                 check_path: /login_check
