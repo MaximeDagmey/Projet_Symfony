@@ -13,7 +13,7 @@ security:
         BU\BibliothequeBundle\Entity\User: plaintext
      
     role_hierarchy:
-        ROLE_DIRECTEUR: [ROLE_CONSERVATEUR, ROLE_LECTEUR, ROLE_PRET, ROLE_MAGASINIER, ROLE_INSCRIPTION, ROLE_ALLOWED_TO_SWICTH]
+        ROLE_DIRECTEUR: [ROLE_CONSERVATEUR, ROLE_LECTEUR, ROLE_PRET, ROLE_MAGASINIER, ROLE_INSCRIT, ROLE_ALLOWED_TO_SWICTH]
         
     access_control:
         - { path: ^/(livre|auteur|theme)/$, roles: ROLE_CONSERVATEUR}
