@@ -10,7 +10,8 @@ use Doctrine\ORM\Query;
  */
 class AuteurRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAuteur($nom, $prenom){
+    public function findAuteur($nom, $prenom)
+    {
         $query = $this->getEntityManager()->createQuery("SELECT a FROM BUBibliothequeBundle:Auteur a 
                                                         WHERE a.nom = :nom AND a.prenom = :prenom ");
 		$query->setParameter('nom', $nom);
