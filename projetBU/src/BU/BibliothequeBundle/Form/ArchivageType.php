@@ -16,13 +16,10 @@ class ArchivageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateType::class, array('input'  => 'datetime',
-                                                 'widget' => 'choice'))
+            ->add('date', DateType::class, array('input'  => 'datetime','widget' => 'choice'))
             ->add('livre')
             ->add('user')
-            ->add('dateretour',DateType::class, array('input'  => 'datetime',
-                                                 'widget' => 'choice'))
-        ;
+            ->add('dateretour',DateType::class, array('input'  => 'datetime','widget' => 'choice'));
     }
     
     /**

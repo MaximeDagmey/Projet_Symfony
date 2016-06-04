@@ -10,6 +10,21 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class LivreRepository extends \Doctrine\ORM\EntityRepository
 {
+<<<<<<< HEAD
+    
+    
+    public function findLivreByAuteur($auteur)
+    {
+		$query = $this->getEntityManager()->createQuery("select l.* from BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Auteur a
+                                                         where l.id = 
+                                                         and  = a.id
+                                                         and a.nom = :nom");
+
+		$query->setParameter('nom', $nom);
+        return $query->getResult();
+	}
+=======
+>>>>>>> 47aeee37c0d899f4fefbc6fe982d8db5388df6e6
     
     public function findLivreByTitreApproximatif($sousChaine)
     {

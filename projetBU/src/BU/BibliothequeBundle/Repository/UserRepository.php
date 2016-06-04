@@ -22,7 +22,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->getEntityManager()->createQuery("SELECT e FROM BUBibliothequeBundle:Emprunt e, BUBibliothequeBundle:User u, BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire Ex 
                                                          WHERE u.id = e.user 
                                                          AND l.id = Ex.livreexemplaire 
-                                                         AND Ex.id = e.exemplaireemprunt
+                                                         AND Ex.id = e.livre
                                                          AND e.user = :UserId");
                                                          
 		$query->setParameter('UserId', $id);
