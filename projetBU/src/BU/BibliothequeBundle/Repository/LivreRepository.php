@@ -9,9 +9,7 @@ namespace BU\BibliothequeBundle\Repository;
  * repository methods below.
  */
 class LivreRepository extends \Doctrine\ORM\EntityRepository
-{
-<<<<<<< HEAD
-    
+{    
     
     public function findLivreByAuteur($auteur)
     {
@@ -23,8 +21,6 @@ class LivreRepository extends \Doctrine\ORM\EntityRepository
 		$query->setParameter('nom', $nom);
         return $query->getResult();
 	}
-=======
->>>>>>> 47aeee37c0d899f4fefbc6fe982d8db5388df6e6
     
     public function findLivreByTitreApproximatif($sousChaine)
     {
