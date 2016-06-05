@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('BUBibliothequeBundle:Default:index.html.twig');
     }
+     public function menuAction()
+     {
+        return $this->render('BUBibliothequeBundle:Default:menu.html.twig');
+    }
+    
 }

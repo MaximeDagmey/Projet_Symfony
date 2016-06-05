@@ -10,4 +10,18 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class EtagereRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    public function findEtagereLivre($idR){
+		$query = $this->getEntityManager()->createQuery("SELECT e FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e, BUBibliothequeBundle:Etagere et  
+                                                        WHERE et.id = :idR and l.id = e.livreexemplaire and e.etagere = et.id");
+        $query->setParameter('idR', $idR);
+        return $query->getResult();
+	}
+    
+    public function CountEtagereLivre($idR){
+		$query = $this->getEntityManager()->createQuery("SELECT count(e) FROM  BUBibliothequeBundle:Exemplaire e, BUBibliothequeBundle:Etagere et  
+                                                        WHERE et.id = :idR and e.etagere = et.id");
+        $query->setParameter('idR', $idR);
+        return $query->getSingleScalarResult();
+	}
 }

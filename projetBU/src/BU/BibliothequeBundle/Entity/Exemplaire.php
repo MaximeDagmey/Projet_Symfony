@@ -7,6 +7,13 @@ namespace BU\BibliothequeBundle\Entity;
  */
 class Exemplaire
 {
+    
+    private $livre;
+
+    public function getLivre()
+    {
+        return $this->$livre;
+    }
     /**
      * @var integer
      */

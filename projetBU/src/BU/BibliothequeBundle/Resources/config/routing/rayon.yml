@@ -27,3 +27,7 @@ rayon_livre:
     path:     /livres/{id}
     defaults: { _controller: "BUBibliothequeBundle:Rayon:RayonLivre" }
     methods:  [GET, POST]
+
+rayon_etage:
+    path:     /etages/{id}
+    defaults: { _controller: "BUBibliothequeBundle:Rayon:RayonEtage" }

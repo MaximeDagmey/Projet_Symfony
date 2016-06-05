@@ -31,10 +31,11 @@ security:
             security: false
         
         gestionBibliotheque:
-            pattern: ^/(emprunt|livre|auteur|reservation|archivage|rayon|etagere|theme|faculte|user|exemplaire|login_check|logout)
+            pattern: ^/(emprunt|livre|auteur|reservation|archivage|rayon|etagere|theme|faculte|user|exemplaire|menu|login_check|logout)
             form_login:
                 login_path: /login
                 check_path: /login_check
+                default_target_path: /menu
             logout:
                 path: /logout
                 target: /

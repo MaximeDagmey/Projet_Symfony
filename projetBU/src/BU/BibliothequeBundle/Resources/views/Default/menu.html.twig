@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Liste de vos fonctions :</h1>
+{% if is_granted('ROLE_CONSERVATEUR') %}
+<a href={{ path('livre_index') }}><h2>gestion Livre</h2></a>
+<a href={{ path('auteur_index') }}><h2>gestion Auteur</h2></a>
+<a href={{ path('theme_index') }}><h2>gestion Thème</h2></a>
+{% endif %}
+{% if is_granted('ROLE_MAGASINIER') %}
+<a href={{ path('rayon_index') }}><h2>gestion Rayon</h2></a>
+<a href={{ path('etagere_index') }}><h2>gestion Etagère</h2></a>
+<a href={{ path('exemplaire_index') }}><h2>gestion Exemplaire</h2></a>
+{% endif %}
+{% if is_granted('ROLE_INSCRIT') %}
+<a href={{ path('user_index') }}><h2>gestion Inscrit</h2></a>
+<a href={{ path('faculte_index') }}><h2>gestion Faculté</h2></a>
+{% endif %}
+{% if is_granted('ROLE_LECTEUR') %}
+<a href={{ path('user_Find_By_Auteur') }}><h2>Rechercher livre par auteur</h2></a>
+<a href={{ path('user_Find_By_Titre_Approximatif') }}><h2>Rechercher livre par titre</h2></a>
+<a href={{ path('livre_Find_By_Theme') }}><h2>Rechercher livre par thème</h2></a>
+<a href={{ path('reservation_new') }}><h2>Réserver un livre</h2></a>
+{% endif %}
+{% if is_granted('ROLE_PRET') %}
+<a href={{ path('emprunt_index') }}><h2>Gestion prêt</h2></a>
+{% endif %}
+{% endblock %}

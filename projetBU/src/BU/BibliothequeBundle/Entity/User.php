@@ -350,4 +350,5 @@ class User implements UserInterface, \Serializable
     {
         $this->roles->removeElement($role);
     }
+    
 }

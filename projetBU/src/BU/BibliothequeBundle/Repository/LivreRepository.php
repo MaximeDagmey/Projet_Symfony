@@ -17,6 +17,7 @@ class LivreRepository extends \Doctrine\ORM\EntityRepository
 		return $queryBuider->getQuery()->getResult();
 	}
     
+    //a supprimer 
     public function findLivreByTheme($ListeTheme)
     {
         $query = $this->getEntityManager()->createQuery("select l from BUBibliothequeBundle:Livre l, BUBibliothequeBundle:theme t, BUBibliothequeBundle:livre_theme lt
