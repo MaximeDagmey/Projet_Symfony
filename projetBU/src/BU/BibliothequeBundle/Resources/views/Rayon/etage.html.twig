@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des etageres</h1>
+
+    <h3>{{ message }}</h3>
+    <h2>Liste</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>numéro</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etage in etages %}
+            <tr>
+                <td><a href="{{ path('etagere_show', { 'id': etage.id }) }}">{{ etage.id }}</a></td>
+                <td>{{ etage.numero }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <ul>
+        <li>
+            <a href="{{ path('rayon_index') }}">Retouner à la liste</a>
+        </li>
+    </ul>
+{% endblock %}

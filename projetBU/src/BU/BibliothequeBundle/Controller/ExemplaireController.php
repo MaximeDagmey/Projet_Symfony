@@ -79,10 +79,19 @@ class ExemplaireController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($exemplaire);
-            $em->flush();
+            $nb = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($exemplaire->getLivreexemplaire()->getTitre());
+            if($nb >= 100){
+                return $this->render('BUBibliothequeBundle:Exemplaire:new.html.twig', array(
+                    'exemplaire' => $exemplaire,
+                    'form' => $form->createView(),
+                ));
+            }
+            else{
+                $em->persist($exemplaire);
+                $em->flush();
 
-            return $this->redirectToRoute('exemplaire_show', array('id' => $exemplaire->getId()));
+                return $this->redirectToRoute('exemplaire_show', array('id' => $exemplaire->getId()));      
+            }
         }
 
         return $this->render('BUBibliothequeBundle:Exemplaire:new.html.twig', array(

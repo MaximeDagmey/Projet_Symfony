@@ -17,19 +17,13 @@ use BU\BibliothequeBundle\Form\LivreType;
         
 class RayonController extends Controller
 {
-    /**
-     * Lists all Rayon entities.
-     *
-     */
+
      
      public function RayonLivreAction(Rayon $rayon)
     {        
-        //$livre = new Livre();
-        //$rayon = new Rayon();
         $form = $this->createForm(RayonType::class, $rayon);
-        $form->remove('themes');
-        $form->remove('notice');/*
-        $form->handleRequest($request);*/
+        //$form->remove('themes');
+        $form->remove('notice');
         $exemplaires = null;
         $message = null;
         $em = $this->getDoctrine()->getManager();
@@ -48,29 +42,30 @@ class RayonController extends Controller
             'form' => $form->createView(),
             'message' => $message,
             ));
-               
-        /*if ($form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            $exemplaires = $em->getRepository('BUBibliothequeBundle:Rayon:')->findRayonLivre($rayon->getId());
-            if(empty($exemplaires)){
-                $message = "Aucun exemplaire n'est disponible";
+    }
+    
+    public function RayonEtageAction(Rayon $rayon)
+    {        
+        $form = $this->createForm(RayonType::class, $rayon);
+        $form->remove('notice');
+        $etage = null;
+        $message = null;
+        $em = $this->getDoctrine()->getManager();
+        
+        $etage = $em->getRepository('BUBibliothequeBundle:Rayon')->findRayonEtag($rayon->getId());
+        
+        if(empty($etage)){
+                $message = "Aucune etagere n'est disponible";
             }
             else {
-                $message = "Un ou des exemplaires sont disponibles pour ce livre";
+                $message = "Une ou des etageres sont disponibles pour ce rayon";
             }
 
-              return $this->render('BUBibliothequeBundle:Rayon:livre.html.twig', array(
-                'exemplaires' => $exemplaires,
-                'form' => $form->createView(),
-                'message' => $message,
-               ));
-        }
-
-        return $this->render('BUBibliothequeBundle:Rayon:livre.html.twig', array(
-            'exemplaires' => $exemplaires,
+            return $this->render('BUBibliothequeBundle:Rayon:etage.html.twig', array(
+            'etages' => $etage,
             'form' => $form->createView(),
-             'message' => $message,
-        ));*/
+            'message' => $message,
+            ));
     }
     
     public function indexAction()
@@ -158,10 +153,12 @@ class RayonController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($rayon);
-            $em->flush();
+            $etagere = $em->getRepository('BUBibliothequeBundle:Rayon')->CountEtagRayon($rayon->getId());
+            if ($etagere <1){
+                $em->remove($rayon);
+                $em->flush();
+            }
         }
-
         return $this->redirectToRoute('rayon_index');
     }
 

@@ -16,4 +16,11 @@ class ExemplaireRepository extends \Doctrine\ORM\EntityRepository
 		$query->setParameter('title', $titre);
        return $query->getSingleScalarResult();
 	}
+  
+  public function findDispoLivre($titre){
+		$query = $this->getEntityManager()->createQuery("SELECT e FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e 
+                                                        WHERE l.titre = :title and l.id = e.livreexemplaire");
+		$query->setParameter('title', $titre);
+       return $query->getResult();
+	}
 }

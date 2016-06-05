@@ -17,4 +17,19 @@ class RayonRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('idR', $idR);
         return $query->getResult();
 	}
+  
+    public function CountEtagRayon($idR){
+      $query = $this->getEntityManager()->createQuery("SELECT count(et) FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e, BUBibliothequeBundle:Etagere et, BUBibliothequeBundle:Rayon r  
+                                                          WHERE r.id = :idR and l.id = e.livreexemplaire and e.etagere = et.id and et.rayon = r.id");
+          $query->setParameter('idR', $idR);
+          return $query->getSingleScalarResult();
+    }
+  
+    public function findRayonEtag($idR){
+		$query = $this->getEntityManager()->createQuery("SELECT et FROM  BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e, BUBibliothequeBundle:Etagere et, BUBibliothequeBundle:Rayon r  
+                                                        WHERE r.id = :idR and l.id = e.livreexemplaire and e.etagere = et.id and et.rayon = r.id");
+        $query->setParameter('idR', $idR);
+        return $query->getResult();
+	}
+  
 }

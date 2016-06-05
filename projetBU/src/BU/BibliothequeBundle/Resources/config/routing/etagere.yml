@@ -22,3 +22,8 @@ etagere_delete:
     path:     /{id}/delete
     defaults: { _controller: "BUBibliothequeBundle:Etagere:delete" }
     methods:  DELETE
+
+etagere_livre:
+    path:     /livres/{id}
+    defaults: { _controller: "BUBibliothequeBundle:Etagere:EtagLivre" }
+    methods:  [GET, POST]

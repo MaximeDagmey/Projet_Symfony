@@ -14,10 +14,31 @@ use BU\BibliothequeBundle\Form\EtagereType;
  */
 class EtagereController extends Controller
 {
-    /**
-     * Lists all Etagere entities.
-     *
-     */
+    
+    public function EtagLivreAction(Etagere $etagere)
+    {        
+        $form = $this->createForm(EtagereType::class, $etagere);
+        //$form->remove('etagere');
+        $exemplaires = null;
+        $message = null;
+        $em = $this->getDoctrine()->getManager();
+        
+        $exemplaires = $em->getRepository('BUBibliothequeBundle:Etagere')->findEtagereLivre($etagere->getId());
+        
+        if(empty($exemplaires)){
+                $message = "Aucun exemplaire n'est disponible";
+            }
+            else {
+                $message = "Un ou des exemplaires sont disponibles pour ce livre";
+            }
+
+            return $this->render('BUBibliothequeBundle:Etagere:livre.html.twig', array(
+            'exemplaires' => $exemplaires,
+            'form' => $form->createView(),
+            'message' => $message,
+            ));
+    }
+    
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -98,25 +119,21 @@ class EtagereController extends Controller
      */
     public function deleteAction(Request $request, Etagere $etagere)
     {
-        $form = $this->createDeleteForm($etagere);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        $deleteForm = $this->createDeleteForm($etagere);
+        
+        if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($etagere);
-            $em->flush();
+            
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Etagere')->CountEtagereLivre($etagere->getId());
+            if($exemplaires < 1){
+                $em->remove($etagere);
+                $em->flush();
+                return $this->redirectToRoute('etagere_index');
+            }
         }
-
         return $this->redirectToRoute('etagere_index');
     }
 
-    /**
-     * Creates a form to delete a Etagere entity.
-     *
-     * @param Etagere $etagere The Etagere entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Etagere $etagere)
     {
         return $this->createFormBuilder()
