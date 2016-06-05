@@ -20,6 +20,7 @@
                 <th>Titre</th>
                 <th>Notice</th>
                 <th>Thème(s)</th>
+                <th>Auteur(s)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,6 +33,11 @@
                 <td>
                     {% for theme in livre.themes %}
                         {{ theme.description}},                            
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for auteur in livre.auteurs %}
+                        {{ auteur.nom}} {{ auteur.prenom}},                            
                     {% endfor %}
                 </td>
                 <td>

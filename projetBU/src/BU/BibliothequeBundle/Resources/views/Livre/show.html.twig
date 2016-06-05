@@ -25,6 +25,14 @@
                     {% endfor %}
                 </td>
             </tr>
+            <tr>
+                <th>Auteur(s)</th>
+                <td>
+                    {% for auteur in livre.auteurs %}
+                        {{ auteur.nom}} {{ auteur.prenom}},                            
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
