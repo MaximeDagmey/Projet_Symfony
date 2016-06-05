@@ -14,8 +14,8 @@ class AuteurRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->getEntityManager()->createQuery("SELECT a FROM BUBibliothequeBundle:Auteur a 
                                                         WHERE (a.nom like :nom) or (a.prenom like :prenom)");
-		$query->setParameter('nom', '%'.$chaine.'%');
-        $query->setParameter('prenom', '%'.$chaine.'%');
+		$query->setParameter('nom', '%'.$nom.'%');
+        $query->setParameter('prenom', '%'.$prenom.'%');
         return $query->getResult();
         
         /*$queryBuider = $this->createQueryBuilder('s');

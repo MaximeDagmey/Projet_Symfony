@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br><h1><u>{{ message }}</u></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>livre</th>
+                <th>Utilisateur</th>
+                {% if (is_granted('ROLE_LECTEUR') or is_granted('ROLE_DIRECTEUR')) %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td><a href="{{ path('reservation_show', { 'id': reservation.livre.id }) }}">{{ reservation.livre.id }}</a></td>
+                <td>{% if reservation.date %}{{ reservation.date|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ reservation.livre }}</td>
+                <td>{{ reservation.user }}</td>
+
+                {% if (is_granted('ROLE_LECTEUR') or is_granted('ROLE_DIRECTEUR')) %}
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reservation_show', { 'id': reservation.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">Éditer</a>
+                        </li>
+                    </ul>
+                </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
+    <ul>
+        <li>
+            <a href="{{ path('reservation_index') }}">Retour à la liste des réservations</a>
+        </li>
+    </ul>
+    {% endif %}
+{% endblock %}
+

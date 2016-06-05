@@ -10,9 +10,12 @@ class DefaultController extends Controller
     {
         return $this->render('BUBibliothequeBundle:Default:index.html.twig');
     }
-     public function menuAction()
-     {
-        return $this->render('BUBibliothequeBundle:Default:menu.html.twig');
+    
+    public function menuAction()
+    {
+        $utilisateur= $this->getUser();
+                
+        return $this->render('BUBibliothequeBundle:Default:menu.html.twig', array('utilisateur' => $utilisateur,));
     }
     
 }

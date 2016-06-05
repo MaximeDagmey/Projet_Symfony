@@ -14,7 +14,9 @@
                 <th>Titre</th>
                 <th>Notice</th>
                 <th>Thème(s)</th>
+                {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
                 <th>Actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -28,6 +30,7 @@
                         {{ theme.description}},                            
                     {% endfor %}
                 </td>
+                {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
                 <td>
                     <ul>
                         <li>
@@ -38,14 +41,17 @@
                         </li>
                     </ul>
                 </td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
     <ul>
-    <li>
-        <a href="{{ path('livre_index') }}">Retour liste livre</a>
-    </li>
+        <li>
+            <a href="{{ path('livre_index') }}">Retour liste livre</a>
+        </li>
     </ul>
+    {% endif %}
 {% endblock %}
 

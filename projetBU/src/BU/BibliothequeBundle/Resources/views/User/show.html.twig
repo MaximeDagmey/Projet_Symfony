@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{% if is_granted('ROLE_INSCRIT') %}
     <h1>Utilisateur</h1>
 
     <table id="table">
@@ -31,6 +32,7 @@
             </tr>
         </tbody>
     </table>
+{% endif %}
     
     <h2>Situation des prêts de l'utilisateur :</h2>
 
@@ -40,6 +42,7 @@
                 <th>Id</th>
                 <th>Date</th>
                 <th>Livre</th>
+                <th>Utilisateur</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -49,13 +52,19 @@
                 <td><a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">{{ emprunt.id }}</a></td>
                 <td>{% if emprunt.date %}{{ emprunt.date|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ emprunt.livre}}</td>
+                <td>{{ emprunt.user}}</td>
                 <td>
                     <ul>
+                        {% if is_granted('ROLE_INSCRIT') %}
                         <li>
                             <a href="{{ path('emprunt_show', { 'id': emprunt.id }) }}">Voir</a>
                         </li>
                         <li>
                             <a href="{{ path('emprunt_edit', { 'id': emprunt.id }) }}">Éditer</a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{ path('emprunt_retour', { 'id': emprunt.id }) }}">Retourner le livre</a>
                         </li>
                     </ul>
                 </td>
@@ -64,6 +73,7 @@
         </tbody>
     </table>    
     
+    {% if is_granted('ROLE_INSCRIT') %}
     <ul>
         <li>
             <a href="{{ path('user_index') }}">Retourner à la liste</a>
@@ -77,4 +87,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

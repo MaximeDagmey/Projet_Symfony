@@ -8,9 +8,11 @@
         <input type="submit" value="Retourner" />
     {{ form_end(form) }}
    <h2>{{ message }}</h2>
+   {% if is_granted('ROLE_PRET') %}
     <ul>
         <li>
             <a href="{{ path('emprunt_index') }}">Retouner à la liste</a>
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

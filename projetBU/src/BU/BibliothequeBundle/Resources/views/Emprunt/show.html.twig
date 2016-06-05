@@ -24,6 +24,7 @@
         </tbody>
     </table>
 
+    {% if (is_granted('ROLE_PRET') or is_granted('ROLE_DIRECTEUR')) %}
     <ul>
         <li>
             <a href="{{ path('emprunt_index') }}">Retourner à la liste</a>
@@ -37,4 +38,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

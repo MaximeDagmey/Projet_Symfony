@@ -135,16 +135,15 @@ class LivreController extends Controller
         $auteur = new Auteur();
         $form = $this->createForm(AuteurType::class, $auteur);
         $form->remove('livreauteur');
-        $form->remove('prenom');
         $form->handleRequest($request);
         $livres = null;
         $message = null;
-        $titre = "Recherche de livres par nom d'auteur";
+        $titre = "Recherche de livres par auteur";
 
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $em = $this->getDoctrine()->getManager();
-            $Listeauteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom());            
+            $Listeauteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom(), $auteur->getPrenom());            
             foreach ($Listeauteur as $auteur)
             {
                 $ListeLivre = $auteur->getLivreauteur() ;

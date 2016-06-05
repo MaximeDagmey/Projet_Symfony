@@ -39,6 +39,8 @@ class ReservationController extends Controller
         $form = $this->createForm(ReservationType::class, $reservation);
         $date = new \Datetime('now');
         $form->get('date')->setData($date);
+        $user= $this->getUser();
+        $form->get('user')->setData($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,6 +55,15 @@ class ReservationController extends Controller
             'reservation' => $reservation,
             'form' => $form->createView(),
         ));
+    }
+    
+    public function SearchByUserAction($id)
+    {        
+        $message = "Listes de vos réservations";
+        $em = $this->getDoctrine()->getManager();
+        $reservations = $em->getRepository('BUBibliothequeBundle:Reservation')->getListeReservationsByUserId($id);
+        
+        return $this->render('BUBibliothequeBundle:Reservation:search.html.twig', array('reservations' => $reservations, 'message' => $message,));
     }
 
     /**

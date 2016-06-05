@@ -27,7 +27,8 @@
             </tr>
         </tbody>
     </table>
-
+    
+    {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
     <ul>
         <li>
             <a href="{{ path('livre_index') }}">Retourner à la liste</a>
@@ -41,4 +42,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

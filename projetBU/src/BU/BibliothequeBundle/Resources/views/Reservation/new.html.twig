@@ -8,9 +8,11 @@
         <input type="submit" value="Créer" />
     {{ form_end(form) }}
 
+    {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
     <ul>
         <li>
             <a href="{{ path('reservation_index') }}">Retourner à la liste des réservations</a>
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

@@ -50,6 +50,7 @@
         <li>
             <a href="{{ path('emprunt_livredispo') }}">Consulter la disponibilité d'un livre</a>
         </li>
+        {% if is_granted('ROLE_PRET') %}
         <li>
             <a href="{{ path('emprunt_livre') }}">Liste des emprunts par livre</a>
         </li>
@@ -62,5 +63,6 @@
          <li>
             <a href="{{ path('emprunt_horsdelai') }}">Liste des emprunts hors délai</a>
         </li>
+        {% endif %}
     </ul>
 {% endblock %}

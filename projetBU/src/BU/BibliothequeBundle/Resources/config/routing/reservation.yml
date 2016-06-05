@@ -22,3 +22,8 @@ reservation_delete:
     path:     /{id}/delete
     defaults: { _controller: "BUBibliothequeBundle:Reservation:delete" }
     methods:  DELETE
+
+reservation_Find_By_User:
+    path:     /{id}/SearchByUser
+    defaults: { _controller: "BUBibliothequeBundle:Reservation:SearchByUser" }
+    methods:  GET

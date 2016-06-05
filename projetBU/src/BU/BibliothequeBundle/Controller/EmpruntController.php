@@ -59,6 +59,8 @@ class EmpruntController extends Controller
     {
         $emprunt = new Emprunt();
         $form = $this->createForm(EmpruntType::class, $emprunt);
+        $date = new \Datetime('now');
+        $form->get('date')->setData($date);
         $form->handleRequest($request);
         $message = null;
 
@@ -216,8 +218,10 @@ class EmpruntController extends Controller
      public function retourAction(Request $request,$id)
     {
        $archivage = new Archivage;
-       $message = 'Début';
+       $message = '';
        $form = $this->createForm(ArchivageType::class, $archivage);
+       $date_retour = new \Datetime('now');
+       $form->get('dateretour')->setData($date_retour);
        $form->remove('date');
        $form->remove('livre');
        $form->remove('user');
@@ -232,7 +236,10 @@ class EmpruntController extends Controller
             $em->persist($archivage);
             $em->remove($emprunt);
             $em->flush();
-            return $this->redirectToRoute('emprunt_index');     
+            if ($user->hasRole('ROLE_PRET') or $user->hasRole('ROLE_DIRECTEUR'))
+                return $this->redirectToRoute('emprunt_index');
+            else
+                 return $this->redirectToRoute('menu');
         }
       
         return $this->render('BUBibliothequeBundle:Emprunt:retour.html.twig', array(
