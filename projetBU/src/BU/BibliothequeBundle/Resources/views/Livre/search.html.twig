@@ -14,6 +14,7 @@
                 <th>Titre</th>
                 <th>Notice</th>
                 <th>Thème(s)</th>
+                <th>Auteur(s)</th>
                 {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
                 <th>Actions</th>
                 {% endif %}
@@ -31,6 +32,11 @@
                     {% endfor %}
                 </td>
                 {% if (is_granted('ROLE_CONSERVATEUR') or is_granted('ROLE_DIRECTEUR')) %}
+                <td>
+                    {% for auteur in livre.auteurs %}
+                        {{ auteur.nom}} {{ auteur.prenom}},                            
+                    {% endfor %}
+                </td>
                 <td>
                     <ul>
                         <li>
