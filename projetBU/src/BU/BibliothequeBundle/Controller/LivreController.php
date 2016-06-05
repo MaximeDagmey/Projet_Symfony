@@ -9,6 +9,8 @@ use BU\BibliothequeBundle\Entity\Livre;
 use BU\BibliothequeBundle\Form\LivreType;
 use BU\BibliothequeBundle\Entity\Auteur;
 use BU\BibliothequeBundle\Form\AuteurType;
+use BU\BibliothequeBundle\Entity\Theme;
+use BU\BibliothequeBundle\Form\ThemeType;
 
 /**
  * Livre controller.
@@ -133,6 +135,7 @@ class LivreController extends Controller
         $auteur = new Auteur();
         $form = $this->createForm(AuteurType::class, $auteur);
         $form->remove('livreauteur');
+        $form->remove('prenom');
         $form->handleRequest($request);
         $livres = null;
         $message = null;
@@ -141,8 +144,17 @@ class LivreController extends Controller
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $em = $this->getDoctrine()->getManager();
-            $auteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom(),$auteur->getPrenom());
-            $livres = $auteur->getLivreauteur();
+            $Listeauteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom());            
+            foreach ($Listeauteur as $auteur)
+            {
+                $ListeLivre = $auteur->getLivreauteur() ;
+                foreach ($ListeLivre as $livre)
+                {
+                    $livres[count($livres)+1] = $livre;
+                }
+            }
+            if (count($livres)>0)  $livres = array_unique($livres);  
+            
             if(empty($livres))
             {
                 $message = "Aucun livre connu pour cet auteur";
@@ -208,6 +220,7 @@ class LivreController extends Controller
     
     public function GetLivresByThemeAction(Request $request)
     {
+        //$theme = new Theme();
         $livre = new Livre();
         $form = $this->createForm(LivreType::class, $livre);
         $form->remove('notice');
@@ -215,12 +228,24 @@ class LivreController extends Controller
         $form->handleRequest($request);
         $livres = null;
         $message = null;
+        $Listetheme = null;
         $titre = "Recherche de livre par theme";
         
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $em = $this->getDoctrine()->getManager();
-            $livres = $em->getRepository('BUBibliothequeBundle:Livre')->findLivreByTheme($livre->getThemes());
+            $Listetheme = $em->getRepository('BUBibliothequeBundle:Theme')->findTheme($livre->getThemes());
+        
+            foreach ($Listetheme as $theme)
+            {
+                $ListeLivre = $theme->getLivretheme() ;
+                foreach ($ListeLivre as $livre)
+                {
+                    $livres[count($livres)+1] = $livre;
+                }
+            }
+           if (count($livres)>0)  $livres = array_unique($livres);     
+            
             if(empty($livres))
             {
                 $message = "Aucun livre connu pour ce theme";

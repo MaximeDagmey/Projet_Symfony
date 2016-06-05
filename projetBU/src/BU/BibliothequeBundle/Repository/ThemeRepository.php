@@ -10,4 +10,10 @@ namespace BU\BibliothequeBundle\Repository;
  */
 class ThemeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findTheme($chaine){
+        $query = $this->getEntityManager()->createQuery("SELECT t FROM BUBibliothequeBundle:Theme t 
+                                                        WHERE t.id in (:id)");
+		$query->setParameter('id', $chaine);
+        return $query->getResult();
+    }
 }

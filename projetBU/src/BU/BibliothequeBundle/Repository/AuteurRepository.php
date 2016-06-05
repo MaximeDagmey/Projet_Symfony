@@ -10,11 +10,22 @@ use Doctrine\ORM\Query;
  */
 class AuteurRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAuteur($nom, $prenom){
+    public function findAuteur($chaine){
         $query = $this->getEntityManager()->createQuery("SELECT a FROM BUBibliothequeBundle:Auteur a 
-                                                        WHERE a.nom = :nom AND a.prenom = :prenom ");
-		$query->setParameter('nom', $nom);
-        $query->setParameter('prenom', $prenom);
-        return $query->getSingleResult();
-    }
+                                                        WHERE (a.nom like :nom) or (a.prenom like :prenom)");
+		$query->setParameter('nom', '%'.$chaine.'%');
+        $query->setParameter('prenom', '%'.$chaine.'%');
+        return $query->getResult();
+        
+        /*$queryBuider = $this->createQueryBuilder('s');
+		$queryBuider->where('s.nom LIKE :sousChaine')->setParameter('sousChaine', '%'.$chaine.'%');
+        $queryBuider->orWhere('s.prenom LIKE :sousChaine')->setParameter('sousChaine', '%'.$chaine.'%');
+        return $queryBuider->getQuery()->getResult();*/
+        
+       /* $queryBuider = $this->createQueryBuilder('a');
+		$queryBuider->where('a.nom LIKE :sousChaine')->setParameter('sousChaine', '%'.$sousChaine.'%');
+        $queryBuider->Orwhere('a.prenom LIKE :sousChaine')->setParameter('sousChaine', '%'.$sousChaine.'%');
+		return $queryBuider->getQuery()->getResult();*/
+        
+         }
 }
