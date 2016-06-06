@@ -18,7 +18,7 @@
         <tbody>
         {% for reservation in reservations %}
             <tr>
-                <td><a href="{{ path('reservation_show', { 'id': reservation.livre.id }) }}">{{ reservation.livre.id }}</a></td>
+                <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
                 <td>{% if reservation.date %}{{ reservation.date|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ reservation.livre }}</td>
                 <td>{{ reservation.user }}</td>
