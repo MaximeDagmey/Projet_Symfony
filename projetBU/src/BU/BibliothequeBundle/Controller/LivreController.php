@@ -135,6 +135,7 @@ class LivreController extends Controller
         $auteur = new Auteur();
         $form = $this->createForm(AuteurType::class, $auteur);
         $form->remove('livreauteur');
+        $form->remove('prenom');
         $form->handleRequest($request);
         $livres = null;
         $message = null;
@@ -143,7 +144,7 @@ class LivreController extends Controller
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $em = $this->getDoctrine()->getManager();
-            $Listeauteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom(), $auteur->getPrenom());            
+            $Listeauteur = $em->getRepository('BUBibliothequeBundle:Auteur')->findAuteur($auteur->getNom());            
             foreach ($Listeauteur as $auteur)
             {
                 $ListeLivre = $auteur->getLivreauteur() ;
