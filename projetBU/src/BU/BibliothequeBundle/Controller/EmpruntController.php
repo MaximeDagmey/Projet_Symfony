@@ -80,7 +80,7 @@ class EmpruntController extends Controller
               }
             }
             if( $reservation >= $exemplaires ){
-                $message = "Le livre n'est disponible";
+                $message = "Le livre n'est pas disponible";
                  return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
                      'emprunt' => $emprunt,
                      'form' => $form->createView(),
@@ -225,6 +225,7 @@ class EmpruntController extends Controller
        $form->remove('date');
        $form->remove('livre');
        $form->remove('user');
+       $user= $this->getUser();
        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $message = 'ajout';
@@ -236,7 +237,7 @@ class EmpruntController extends Controller
             $em->persist($archivage);
             $em->remove($emprunt);
             $em->flush();
-            if ($user->hasRole('ROLE_PRET') or $user->hasRole('ROLE_DIRECTEUR'))
+            if ($this->isGranted('ROLE_PRET') or $this->isGranted('ROLE_DIRECTEUR'))
                 return $this->redirectToRoute('emprunt_index');
             else
                  return $this->redirectToRoute('menu');

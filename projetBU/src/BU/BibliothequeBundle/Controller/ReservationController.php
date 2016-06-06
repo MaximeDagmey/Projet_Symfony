@@ -34,7 +34,7 @@ class ReservationController extends Controller
      *
      */
     public function newAction(Request $request)
-    {
+    {        
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $date = new \Datetime('now');
@@ -42,19 +42,36 @@ class ReservationController extends Controller
         $user= $this->getUser();
         $form->get('user')->setData($user);
         $form->handleRequest($request);
+        $message = null;
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
             $em = $this->getDoctrine()->getManager();
+            $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($reservation->getLivre()->getTitre());
+            $reservations = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($reservation->getLivre()->getTitre());
+            if($reservation->getUser()->getCycle() == 1)
+            {
+              $useremp = $em->getRepository('BUBibliothequeBundle:Emprunt')->findEmpuser($reservation->getUser());
+              if($useremp >= 5)
+              {
+                 $message = "L'utilisateur ne peut plus faire de réservation";
+                 return $this->render('BUBibliothequeBundle:Reservation:new.html.twig', array('reservation' => $reservation,'form' => $form->createView(),'message' => $message,));
+              }
+            }
+            if( $reservations >= $exemplaires )
+            {
+                $message = "Le livre n'est pas disponible";
+                 return $this->render('BUBibliothequeBundle:Reservation:new.html.twig', array('reservation' => $reservation,'form' => $form->createView(),'message' => $message,));
+            }
+            else 
+               
             $em->persist($reservation);
             $em->flush();
 
             return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
         }
 
-        return $this->render('BUBibliothequeBundle:Reservation:new.html.twig', array(
-            'reservation' => $reservation,
-            'form' => $form->createView(),
-        ));
+        return $this->render('BUBibliothequeBundle:Reservation:new.html.twig', array('reservation' => $reservation,'form' => $form->createView(),'message' => $message,));
     }
     
     public function SearchByUserAction($id)

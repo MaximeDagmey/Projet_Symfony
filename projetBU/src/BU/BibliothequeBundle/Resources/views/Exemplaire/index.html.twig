@@ -2,16 +2,13 @@
 
 {% block body %}
     <h1>Liste des exemplaires</h1>
-    <ul>
-        <li>
-            <a href="{{ path('exemplaire_ExempLivre') }}">Rechercher les exemplaire d'un livre</a>
-        </li>
-    </ul>
+    
     <table>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Désignation</th>
+                <th>Livre</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('exemplaire_show', { 'id': exemplaire.id }) }}">{{ exemplaire.id }}</a></td>
                 <td>{{ exemplaire.designation }}</td>
+                <td>{{ exemplaire.livreexemplaire }}</td>
                 <td>
                     <ul>
                         <li>
@@ -39,5 +37,9 @@
         <li>
             <a href="{{ path('exemplaire_new') }}">Créer un nouvel exemplaire</a>
         </li>
+        <li>
+            <a href="{{ path('exemplaire_ExempLivre') }}">Rechercher les exemplaires d'un livre</a>
+        </li>
     </ul>
+
 {% endblock %}
