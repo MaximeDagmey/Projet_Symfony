@@ -10,6 +10,7 @@
                 <th>Date</th>
                 <th>Livre</th>
                 <th>Utilisateur</th>
+                <th>Date retour</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{% if archivage.date %}{{ archivage.date|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ archivage.livre }}</td>
                 <td>{{ archivage.user}}</td>
+                <td>{{ archivage.dateretour}}</td>
                 <td>
                     <ul>
                         <li>
