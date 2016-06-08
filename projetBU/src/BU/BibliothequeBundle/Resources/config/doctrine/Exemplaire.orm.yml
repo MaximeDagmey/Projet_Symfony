@@ -26,10 +26,11 @@ BU\BibliothequeBundle\Entity\Exemplaire:
             cascade: [ persist ]
             joinColumn:
               onDelete: cascade
-    oneToMany:
+    oneToOne:
         livreemprunt:
             targetEntity: Emprunt
             mappedBy:  livre
+    oneToMany:
         livreempruntarch:
             targetEntity: Archivage
             mappedBy:  livre

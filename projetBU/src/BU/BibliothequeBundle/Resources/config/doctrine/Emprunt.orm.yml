@@ -7,13 +7,14 @@ BU\BibliothequeBundle\Entity\Emprunt:
             id: true
             generator:
                 strategy: AUTO
-    manyToOne:
-        livre:
+    oneToOne:
+       livre:
             targetEntity: Exemplaire
             inversedBy: livreemprunt
             cascade: [ persist ]
             joinColumn:
-               onDelete: cascade
+               onDelete: cascade        
+    manyToOne:    
         user:
             targetEntity: User
             inversedBy: empruntuser

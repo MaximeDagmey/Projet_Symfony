@@ -235,4 +235,18 @@ class Exemplaire
     {
         return $this->livreempruntarch;
     }
+
+    /**
+     * Set livreemprunt
+     *
+     * @param \BU\BibliothequeBundle\Entity\Emprunt $livreemprunt
+     *
+     * @return Exemplaire
+     */
+    public function setLivreemprunt(\BU\BibliothequeBundle\Entity\Emprunt $livreemprunt = null)
+    {
+        $this->livreemprunt = $livreemprunt;
+
+        return $this;
+    }
 }

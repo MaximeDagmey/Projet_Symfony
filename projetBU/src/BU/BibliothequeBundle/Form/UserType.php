@@ -14,8 +14,7 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('nom')
+        $builder->add('nom')
             ->add('prenom')
             ->add('password')
             ->add('cycle')
@@ -32,4 +31,11 @@ class UserType extends AbstractType
             'data_class' => 'BU\BibliothequeBundle\Entity\User'
         ));
     }
+    
+    public function setDefaultOptions(OptionResolverInterface $resolver)
+{
+    $resolver->setDefaults(array(
+        'multiple' => false,
+    ));
+}
 }

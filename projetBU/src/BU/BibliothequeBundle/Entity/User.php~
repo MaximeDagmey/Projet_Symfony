@@ -308,7 +308,7 @@ class User implements UserInterface, \Serializable
     }
     
      public function getRoles() { 
-       return $this->role->toArray(); 
+       return $this->roles->toArray(); 
     } 
     
     public function eraseCredentials() { } 
@@ -350,4 +350,5 @@ class User implements UserInterface, \Serializable
     {
         $this->roles->removeElement($role);
     }
+    
 }
