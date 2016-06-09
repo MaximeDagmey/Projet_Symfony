@@ -68,6 +68,8 @@ class EmpruntController extends Controller
             $em = $this->getDoctrine()->getManager();
             $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
             $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
+            $empruntlibre = $em->getRepository('BUBibliothequeBundle:Emprunt')->findExempLivreLibre($emprunt->getLivre()->getLivreExemplaire()->getTitre());
+            $exemplaireemprunt = $em->getRepository('BUBibliothequeBundle:Emprunt')->findExemplaireEmprunt($emprunt->getLivre()->getId());
             if($emprunt->getUser()->getCycle() == 1){
               $useremp = $em->getRepository('BUBibliothequeBundle:Emprunt')->findEmpuser($emprunt->getUser());
               if($useremp >= 5){
@@ -79,8 +81,16 @@ class EmpruntController extends Controller
                  ));
               }
             }
-            if( $reservation >= $exemplaires ){
+            if( $reservation >= $exemplaires || $empruntlibre == 0 ){
                 $message = "Le livre n'est pas disponible";
+                 return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
+                     'emprunt' => $emprunt,
+                     'form' => $form->createView(),
+                     'message' => $message,
+                 ));
+            }
+            if ($exemplaireemprunt == 1){
+                 $message = "Cet exemplaire n'est pas disponible";
                  return $this->render('BUBibliothequeBundle:Emprunt:new.html.twig', array(
                      'emprunt' => $emprunt,
                      'form' => $form->createView(),
@@ -137,7 +147,8 @@ class EmpruntController extends Controller
             $em = $this->getDoctrine()->getManager();
             $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($livre->getTitre());
             $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($livre->getTitre());
-            if($reservation >= $exemplaires ){
+            $emprunt = $em->getRepository('BUBibliothequeBundle:Emprunt')->findExempLivreLibre($livre->getTitre());
+            if($reservation >= $exemplaires || $emprunt == 0 ){
                 $message = "Aucun exemplaire n'est disponible";
             }
             else {
