@@ -137,7 +137,8 @@ class EmpruntController extends Controller
             $em = $this->getDoctrine()->getManager();
             $exemplaires = $em->getRepository('BUBibliothequeBundle:Exemplaire')->findExemplaireLivre($livre->getTitre());
             $reservation = $em->getRepository('BUBibliothequeBundle:Reservation')->findReservationLivre($livre->getTitre());
-            if($reservation >= $exemplaires ){
+            $emprunt = $em->getRepository('BUBibliothequeBundle:Emprunt')->findExempLivreLibre($livre->getTitre());
+            if($reservation >= $exemplaires || $emprunt == 0 ){
                 $message = "Aucun exemplaire n'est disponible";
             }
             else {
