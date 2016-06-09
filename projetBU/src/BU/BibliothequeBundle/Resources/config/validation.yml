@@ -1,0 +1,4 @@
+BU\BibliothequeBundle\Entity\User:
+    properties:
+        cycle:
+            - LessThan: { value: 3, message: La valeur doit être inférieure ou égale à 2 }
