@@ -17,6 +17,12 @@ class EmpruntRepository extends \Doctrine\ORM\EntityRepository
 		$query->setParameter('title', $titre);
         return $query->getResult();
 	}
+    public function findExemplaireEmprunt($id){
+		$query = $this->getEntityManager()->createQuery("SELECT COUNT(e) FROM BUBibliothequeBundle:Emprunt s, BUBibliothequeBundle:Exemplaire e 
+                                                        WHERE e.id = :id and e.id = s.livre ");
+		$query->setParameter('id', $id);
+        return $query->getSingleScalarResult();
+	}
        
    public function findExempLivreLibre($titre){
 		$query = $this->getEntityManager()->createQuery("SELECT COUNT(e) FROM BUBibliothequeBundle:Livre l, BUBibliothequeBundle:Exemplaire e 
